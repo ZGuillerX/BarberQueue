@@ -1,0 +1,59 @@
+# -------------------------------
+# Node modules
+# -------------------------------
+/node_modules
+/package-lock.json
+/yarn.lock
+/pnpm-lock.yaml
+
+# -------------------------------
+# Environment files
+# -------------------------------
+.env
+.env.local
+.env.development
+.env.production
+.env.test
+
+# -------------------------------
+# Logs
+# -------------------------------
+*.log
+logs/
+logs/*.log
+npm-debug.log*
+yarn-error.log
+pnpm-debug.log
+
+# -------------------------------
+# Build output (si usas TypeScript)
+# -------------------------------
+/dist
+/out-tsc
+/*.tsbuildinfo
+
+# -------------------------------
+# Coverage
+# -------------------------------
+/coverage
+
+# -------------------------------
+# IDEs / editors
+# -------------------------------
+/.idea/
+/.vscode/
+/*.code-workspace
+*.sublime-workspace
+.history/*
+
+# -------------------------------
+# System files
+# -------------------------------
+.DS_Store
+Thumbs.db
+
+# -------------------------------
+# Process managers / misc
+# -------------------------------
+/pm2*.log
+/.pm2
