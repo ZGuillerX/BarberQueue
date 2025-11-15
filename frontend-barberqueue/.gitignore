@@ -1,15 +1,37 @@
+# -------------------------------
 # Compiled output
+# -------------------------------
 /dist
 /tmp
 /out-tsc
 /bazel-out
 
+# -------------------------------
 # Node
+# -------------------------------
 /node_modules
 npm-debug.log
 yarn-error.log
+pnpm-debug.log
+package-lock.json
+pnpm-lock.yaml
+yarn.lock
 
+# Env files (MUY IMPORTANTE)
+.env
+.env.local
+.env.development
+.env.production
+.env.test
+
+# Logs
+logs
+*.log
+logs/*.log
+
+# -------------------------------
 # IDEs and editors 
+# -------------------------------
 /.idea/
 /.project
 .classpath
@@ -21,8 +43,9 @@ yarn-error.log
 .vscode/
 *.code-workspace
 
-
+# -------------------------------
 # Miscellaneous
+# -------------------------------
 /.angular/cache
 .sass-cache/
 /connect.lock
@@ -30,7 +53,17 @@ yarn-error.log
 /libpeerconnection.log
 testem.log
 /typings
+/*.tsbuildinfo
 
+# -------------------------------
 # System files
+# -------------------------------
 .DS_Store
 Thumbs.db
+
+# -------------------------------
+# Build tools / Process managers
+# -------------------------------
+/pm2*.log
+/.pm2
+/husky/_ 

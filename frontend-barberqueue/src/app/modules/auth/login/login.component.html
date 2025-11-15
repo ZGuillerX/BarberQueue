@@ -1,4 +1,4 @@
-<body>
+<body *ngIf="showForm">
   <main>
     <header>
       <app-logo></app-logo>
@@ -6,13 +6,34 @@
       <p>Inicia sesión en tu cuenta</p>
     </header>
 
-    <form>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
       <!-- Input email -->
       <div class="input-wrapper">
         <label for="email">Email</label>
         <div class="input-container">
-          <img src="/assets/icons/email.svg"/>
-          <input type="email" id="email" placeholder="tu@email.com" />
+          <img src="/assets/icons/email.svg" />
+          <input
+            type="email"
+            id="email"
+            placeholder="tu@email.com"
+            formControlName="email"
+          />
+        </div>
+        <!--mensaje de error-->
+        <div
+          class="error-message"
+          *ngIf="
+            (loginForm.get('email')?.invalid &&
+              loginForm.get('email')?.dirty) ||
+            loginForm.get('email')?.touched
+          "
+        >
+          <span *ngIf="loginForm.get('email')?.hasError('required')"
+            >El campo es obligatorio</span
+          >
+          <span *ngIf="loginForm.get('email')?.hasError('email')"
+            >Formato de email invalido</span
+          >
         </div>
       </div>
 
@@ -21,12 +42,34 @@
         <label for="password">Contraseña</label>
         <div class="input-container">
           <img src="/assets/icons/lock.svg" alt="" />
-          <input type="password" id="password" placeholder="••••••••" />
+          <input
+            type="password"
+            id="password"
+            placeholder="••••••••"
+            formControlName="password"
+          />
+        </div>
+
+        <!--mensaje de error-->
+        <div
+          class="error-message"
+          *ngIf="
+            (loginForm.get('password')?.invalid &&
+              loginForm.get('password')?.dirty) ||
+            loginForm.get('email')?.touched
+          "
+        >
+          <span *ngIf="loginForm.get('password')?.hasError('required')"
+            >La contraseña es obligatoria</span
+          >
+          <span *ngIf="loginForm.get('password')?.hasError('minlength')"
+            >Mínimo 8 caracteres</span
+          >
         </div>
       </div>
 
       <button type="submit">Iniciar sesión</button>
-      <a href="/register"
+      <a routerLink="/register"
         >¿No tienes una cuenta? <span>Regístrate aqui</span></a
       >
     </form>

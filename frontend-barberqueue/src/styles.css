@@ -75,6 +75,11 @@ form input::placeholder {
   transition: border-color 0.3s;
 }
 
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px var(--background-input) inset !important;
+  -webkit-text-fill-color: var(--font-color-1) !important;
+}
+
 .input-container img {
   position: absolute;
   left: 12px;
@@ -122,4 +127,51 @@ a span {
 a span:hover {
   color: #9dd654;
   text-decoration: underline;
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+/* mensajes de error */
+
+.error-message {
+  span {
+    color: #f44336;
+    font-family: "Arimo", sans-serif;
+    font-size: 14px;
+    letter-spacing: 1px;
+  }
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+/* alertas success  */
+
+.success-snackbar {
+  position: fixed !important;
+  left: 50% !important;
+  top: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  z-index: 9999 !important;
+}
+
+/* Estilo visual del snackbar */
+.success-snackbar .mdc-snackbar__surface {
+  background-color: #4caf50 !important;
+  color: white !important;
+  font-weight: bold;
+  border-radius: 8px !important;
 }
