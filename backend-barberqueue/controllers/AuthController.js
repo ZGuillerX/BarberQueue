@@ -47,10 +47,14 @@ class AuthController {
     if (!isMatch)
       return res.status(401).json({ message: "Contrasena incorrecta" });
 
-    //crear el token
-    const token = jwt.sign(user, SECRET, {
-      expiresIn: "1h",
-    });
+    //crear el token con roleId como número
+    const token = jwt.sign(
+      { id: user.id, roleId: Number(user.roleId) },
+      SECRET,
+      {
+        expiresIn: "1h",
+      }
+    );
 
     res.status(201).json({ message: "Login Exitoso", user, token });
   }
