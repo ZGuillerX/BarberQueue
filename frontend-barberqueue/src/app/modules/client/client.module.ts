@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { ClientRoutingModule } from './client-routing.module';
 import { TurnComponent } from './pages/turn/turn.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -11,6 +12,7 @@ import { TurnComponent } from './pages/turn/turn.component';
   imports: [
     CommonModule,
     ClientRoutingModule, 
+    SharedModule
   ],
 })
 export class ClientModule {}

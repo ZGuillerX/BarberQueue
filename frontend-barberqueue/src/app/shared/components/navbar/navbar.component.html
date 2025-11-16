@@ -1,0 +1,19 @@
+<nav class="navbar">
+  <div class="div-logo">
+    <app-logo
+      class="logo-navbar"
+      width="40px"
+      height="40xp"
+      borderRadius="10px"
+    ></app-logo>
+    <div class="div-rol">
+      <p>BarberQueue</p>
+      <p>{{ role }}</p>
+    </div>
+  </div>
+  <div class="nav-buttons">
+    <button *ngFor="let option of optionsNav" [routerLink]="option.route">
+      {{ option.label }}
+    </button>
+  </div>
+</nav>

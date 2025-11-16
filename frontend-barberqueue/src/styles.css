@@ -1,5 +1,6 @@
 :root {
   --primary-background: #7ccf00;
+  --secondary-background: linear-gradient(#252525, #000000);
   --background-form: #262626;
   --background-input: #404040;
   --font-color-1: #ffffff;
@@ -13,7 +14,7 @@
 }
 
 body {
-  background-color: black;
+  background: var(--secondary-background);
 }
 
 h1 {

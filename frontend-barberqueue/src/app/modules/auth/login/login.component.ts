@@ -45,7 +45,7 @@ export class LoginComponent {
         //redirigir al home despues de 1 segunfdo
 
         setTimeout(() => {
-          this.router.navigate(['/home']);
+          this.router.navigate(['/client/turn']);
         }, 1000);
         this.loginForm.reset();
       },

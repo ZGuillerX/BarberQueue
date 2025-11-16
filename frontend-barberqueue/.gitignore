@@ -1,57 +1,45 @@
 # -------------------------------
-# Compiled output
+# Angular build output
 # -------------------------------
 /dist
-/tmp
 /out-tsc
-/bazel-out
+/.angular/cache
 
 # -------------------------------
 # Node
 # -------------------------------
 /node_modules
-npm-debug.log
-yarn-error.log
-pnpm-debug.log
 package-lock.json
-pnpm-lock.yaml
 yarn.lock
+pnpm-lock.yaml
 
-# Env files (MUY IMPORTANTE)
-.env
-.env.local
-.env.development
-.env.production
-.env.test
+# -------------------------------
+# Environment files (muy importante)
+# -------------------------------
+/src/environments/
 
+# -------------------------------
 # Logs
-logs
+# -------------------------------
 *.log
+logs/
 logs/*.log
 
 # -------------------------------
-# IDEs and editors 
+# IDEs and editors
 # -------------------------------
 /.idea/
-/.project
-.classpath
-.c9/
-*.launch
-.settings/
+/.vscode/
+/*.code-workspace
 *.sublime-workspace
 .history/*
-.vscode/
-*.code-workspace
 
 # -------------------------------
 # Miscellaneous
 # -------------------------------
-/.angular/cache
-.sass-cache/
+/.sass-cache/
 /connect.lock
 /coverage
-/libpeerconnection.log
-testem.log
 /typings
 /*.tsbuildinfo
 
@@ -60,10 +48,3 @@ testem.log
 # -------------------------------
 .DS_Store
 Thumbs.db
-
-# -------------------------------
-# Build tools / Process managers
-# -------------------------------
-/pm2*.log
-/.pm2
-/husky/_ 
