@@ -11,7 +11,9 @@ export class NavbarComponent {
   public role: 'admin' | 'barber' | 'client' | null = null;
 
   //definimos las propiedad para navegar
-  public optionsNav: { label: string; route: string }[] = [];
+  public optionsNav: { icon: string; label: string; route: string }[] = [];
+
+  public dataClient: { name: string; email: string }[] = [];
 
   constructor(private authService: AuthService) {}
 
@@ -21,20 +23,42 @@ export class NavbarComponent {
       //obtenemos el rol cuando se inicie el componente(una sola vez)
       this.setOptions();
     });
+
+    this.authService.globalDataUser.subscribe((dataUser) => {
+      this.dataClient = dataUser
+        ? [{ name: dataUser.name, email: dataUser.email }]
+        : [];
+    });
   }
 
   //creamos las funciones para opciones para cada rol
   setOptions() {
     switch (this.role) {
       case 'client':
-        this.optionsNav = [{ label: 'Tomar Turno', route: '/client/turn' }];
+        this.optionsNav = [
+          {
+            icon: '/assets/icons/turn.svg',
+            label: 'Tomar Turno',
+            route: '/client/turn',
+          },
+          {
+            icon: '/assets/icons/settings.svg',
+            label: 'Ajustes',
+            route: 'client/settings',
+          },
+        ];
         break;
       case 'barber':
-        this.optionsNav = [{ label: 'Panel', route: '/barber/panel' }];
+        this.optionsNav = [
+          { icon: '', label: 'Panel', route: '/barber/panel' },
+        ];
         break;
       case 'admin':
-        this.optionsNav = [{ label: 'Panel', route: '/admin/panel' }];
+        this.optionsNav = [{ icon: '', label: 'Panel', route: '/admin/panel' }];
         break;
     }
+  }
+  logout() {
+    this.authService.logout();
   }
 }

@@ -49,7 +49,12 @@ class AuthController {
 
     //crear el token con roleId como número
     const token = jwt.sign(
-      { id: user.id, roleId: Number(user.roleId) },
+      {
+        id: user.id,
+        name: user.name,
+        email: user.email,
+        roleId: Number(user.roleId),
+      },
       SECRET,
       {
         expiresIn: "1h",
@@ -58,6 +63,7 @@ class AuthController {
 
     res.status(201).json({ message: "Login Exitoso", user, token });
   }
+
 }
 
 export default new AuthController();

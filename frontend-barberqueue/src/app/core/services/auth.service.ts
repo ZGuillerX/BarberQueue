@@ -3,12 +3,13 @@ import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, tap } from 'rxjs';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { Router } from '@angular/router';
 
 export interface User {
-  readonly id: string;
+  readonly id?: string;
   name: string;
   email: string;
-  roleId: string;
+  roleId?: string;
 }
 
 export interface RegisterData {
@@ -42,10 +43,15 @@ export class AuthService {
     'admin' | 'barber' | 'client' | null
   >(null);
 
+  public globalDataUser = new BehaviorSubject<{
+    name: string;
+    email: string;
+  } | null>(null);
+
   //hacemos que el rol sea solo de lectura fuera de la clase authService
   public userRole$ = this.globalRoleSubject.asObservable();
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private router: Router) {
     this.loadRoleFromToken();
   }
 
@@ -65,12 +71,23 @@ export class AuthService {
     );
   }
 
+  logout() {
+    localStorage.removeItem('token');
+    this.globalRoleSubject.next(null);
+    this.globalDataUser.next(null);
+    this.router.navigate(['/login']);
+  }
+
   setRoleFromToken(token: string) {
     try {
       //decodificamos el payload que son los datos del usuario para obtener el rol
       const payload = JSON.parse(atob(token.split('.')[1]));
+      console.log(payload)
       const roleNum = Number(payload.roleId);
+      const dataUser = { name: payload.name, email: payload.email };
+      console.log(dataUser);
       const role: 'admin' | 'barber' | 'client' = this.roleMap[roleNum] ?? null;
+      this.globalDataUser.next(dataUser);
       this.globalRoleSubject.next(role);
     } catch (err) {
       console.error('error parsing token', err);
@@ -90,5 +107,9 @@ export class AuthService {
   //obtnemos el rol para usarlo en clases externas
   getRole(): 'admin' | 'barber' | 'client' | null {
     return this.globalRoleSubject.value;
+  }
+
+  getUserData(): User | null {
+    return this.globalDataUser.value;
   }
 }

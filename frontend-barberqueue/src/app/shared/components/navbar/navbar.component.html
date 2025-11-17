@@ -12,8 +12,19 @@
     </div>
   </div>
   <div class="nav-buttons">
-    <button *ngFor="let option of optionsNav" [routerLink]="option.route">
+    <button
+      class="nav-button"
+      *ngFor="let option of optionsNav"
+      [routerLink]="option.route"
+    >
+      <img class="nav-icon" *ngIf="option.icon" [src]="option.icon" />
       {{ option.label }}
     </button>
+    <div class="user-info" *ngFor="let user of dataClient">
+      <p class="user-name">{{ user.name }}</p>
+      <p class="user-email">{{ user.email }}</p>
+    </div>
+
+    <button class="logout-button" (click)="logout()">Cerrar Sesion</button>
   </div>
 </nav>

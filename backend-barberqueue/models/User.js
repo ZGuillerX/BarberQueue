@@ -21,8 +21,6 @@ class User {
     return { id: result.insertId, name, email, roleId };
   }
 
-  
-
 }
 
 export default new User();

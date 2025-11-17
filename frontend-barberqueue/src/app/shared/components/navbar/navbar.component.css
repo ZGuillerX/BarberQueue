@@ -13,22 +13,50 @@
 }
 
 .navbar .div-rol p:first-of-type {
-  font-size: 16px; 
-  font-weight: bold; 
+  font-size: 16px;
+  font-weight: bold;
 }
 
 .navbar .div-rol p:nth-of-type(2) {
-  font-size: 14px; 
+  font-size: 14px;
 }
 
-
 .logo-navbar {
-  margin-top: 18px;
+  margin-top: 30px;
 }
 
 .div-rol {
   display: flex;
   flex-direction: column;
   row-gap: 5px;
-  margin-top: 13px;
+  margin-top: 25px;
+}
+
+.nav-buttons {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  margin-left: 15px;
+  margin-top: 15px;
+  gap: 10px;
+
+  .nav-button {
+    width: 137px;
+    height: 36;
+    height: 40px;
+    font-size: 14px;
+    background: none;
+    color: var(--font-color-3);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: center;
+  }
+  .nav-button:hover {
+    background: var(--primary-background);
+    color: var(--font-color-1);
+  }
+  .nav-icon {
+  }
 }
