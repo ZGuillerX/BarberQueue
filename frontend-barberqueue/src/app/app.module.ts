@@ -10,6 +10,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { NgxSonnerToaster } from "ngx-sonner";
 
 @NgModule({
   declarations: [AppComponent],
@@ -25,7 +26,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     BrowserAnimationsModule,
     MatSnackBarModule,
     MatFormFieldModule,
-  ],
+    NgxSonnerToaster
+],
   providers: [],
   bootstrap: [AppComponent],
 })

@@ -1,30 +1,109 @@
 <nav class="navbar">
-  <div class="div-logo">
-    <app-logo
-      class="logo-navbar"
-      width="40px"
-      height="40xp"
-      borderRadius="10px"
-    ></app-logo>
-    <div class="div-rol">
-      <p>BarberQueue</p>
-      <p>{{ role }}</p>
+  <!-- Header móvil con logo y hamburguesa -->
+  <div class="mobile-header">
+    <button
+      class="hamburger-btn"
+      [class.active]="menuOpen"
+      (click)="toggleMenu()"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <div class="mobile-logo">
+      <app-logo
+        class="logo-navbar"
+        width="35px"
+        height="35px"
+        borderRadius="8px"
+      ></app-logo>
+      <span class="logo-text">BarberQueue</span>
     </div>
   </div>
-  <div class="nav-buttons">
-    <button
-      class="nav-button"
-      *ngFor="let option of optionsNav"
-      [routerLink]="option.route"
-    >
-      <img class="nav-icon" *ngIf="option.icon" [src]="option.icon" />
-      {{ option.label }}
-    </button>
-    <div class="user-info" *ngFor="let user of dataClient">
-      <p class="user-name">{{ user.name }}</p>
-      <p class="user-email">{{ user.email }}</p>
+
+  <!-- Overlay para cerrar el menú -->
+  <div class="overlay" [class.active]="menuOpen" (click)="toggleMenu()"></div>
+
+  <!-- Contenedor principal -->
+  <div class="navbar-container" [class.menu-open]="menuOpen">
+    <section class="div-logo">
+      <!--section left-->
+      <div class="section-left-navbar">
+        <app-logo
+          class="logo-navbar"
+          width="40px"
+          height="40px"
+          borderRadius="10px"
+        ></app-logo>
+
+        <div class="div-rol">
+          <p>BarberQueue</p>
+          <p>{{ role }}</p>
+        </div>
+      </div>
+
+      <!--section right (desktop)-->
+      <div class="section-right-navbar desktop-only">
+        <!-- Información del usuario logueado -->
+        @for (user of dataClient; track user) {
+        <div class="user-info">
+          <p class="user-name">{{ user.name }}</p>
+          <p class="user-email">{{ user.email }}</p>
+        </div>
+        }
+
+        <!--principal letter circle-->
+        @for (user of dataClient; track user) {
+        <div class="principal-letter">
+          {{ user.pricipalLetter }}
+        </div>
+        }
+
+        <!--cerrar sesión -->
+        <button class="logout-button" (click)="logout()">
+          <img src="/assets/icons/exit.svg" alt="" /> Cerrar Sesión
+        </button>
+      </div>
+    </section>
+
+    <!-- User info (mobile) -->
+    <div class="mobile-user-info">
+      @for (user of dataClient; track user) {
+      <div class="principal-letter">
+        {{ user.pricipalLetter }}
+      </div>
+      <div class="user-details">
+        <p class="user-name">{{ user.name }}</p>
+        <p class="user-email">{{ user.email }}</p>
+      </div>
+      }
     </div>
 
-    <button class="logout-button" (click)="logout()">Cerrar Sesion</button>
+    <!--botones de navegación -->
+    <div class="nav-buttons">
+      <!-- Generación de botones dinámicos (menú principal) -->
+      @for (option of optionsNav; track option) {
+      <button
+        class="nav-button"
+        [routerLink]="option.route"
+        [ngClass]="{ 'active-nav': activeRoute === option.route }"
+        (click)="onNavClick()"
+      >
+        <!-- icono en la opción-->
+        @if (option.icon) {
+        <img class="nav-icon" [src]="option.icon" />
+        }
+
+        <!-- Texto del botón -->
+        {{ option.label }}
+      </button>
+      }
+
+      <!-- Logout button (mobile only) -->
+      <button class="logout-button mobile-only" (click)="logout()">
+        <img src="/assets/icons/exit.svg" alt="" /> Cerrar Sesión
+      </button>
+    </div>
   </div>
 </nav>

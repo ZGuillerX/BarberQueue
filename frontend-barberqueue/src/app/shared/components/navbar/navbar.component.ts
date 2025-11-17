@@ -1,37 +1,61 @@
 import { Component } from '@angular/core';
 import { AuthService } from 'src/app/core/services/auth.service';
+import { toast } from 'ngx-sonner';
+import Swal from 'sweetalert2';
+import { NavigationEnd, Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
+  standalone: false,
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css'],
 })
 export class NavbarComponent {
-  //definimos los roles
+  // definimos los roles
   public role: 'admin' | 'barber' | 'client' | null = null;
 
-  //definimos las propiedad para navegar
+  // definimos la propiedad para navegar
   public optionsNav: { icon: string; label: string; route: string }[] = [];
 
-  public dataClient: { name: string; email: string }[] = [];
+  public dataClient: { name: string; email: string; pricipalLetter: string }[] =
+    [];
 
-  constructor(private authService: AuthService) {}
+  public activeRoute: string = '';
+
+  // menu para moviles
+  public menuOpen: boolean = false;
+
+  constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit() {
+    this.activeRoute = this.router.url;
+
     this.authService.userRole$.subscribe((role) => {
       this.role = role;
-      //obtenemos el rol cuando se inicie el componente(una sola vez)
       this.setOptions();
     });
 
     this.authService.globalDataUser.subscribe((dataUser) => {
+      let letter = dataUser?.name.slice(0, 1) || '';
       this.dataClient = dataUser
-        ? [{ name: dataUser.name, email: dataUser.email }]
+        ? [
+            {
+              name: dataUser.name,
+              email: dataUser.email,
+              pricipalLetter: letter,
+            },
+          ]
         : [];
+    });
+
+    this.router.events.subscribe((e) => {
+      if (e instanceof NavigationEnd) {
+        this.activeRoute = e.urlAfterRedirects;
+      }
     });
   }
 
-  //creamos las funciones para opciones para cada rol
+  // creamos las funciones para opciones para cada rol
   setOptions() {
     switch (this.role) {
       case 'client':
@@ -44,7 +68,7 @@ export class NavbarComponent {
           {
             icon: '/assets/icons/settings.svg',
             label: 'Ajustes',
-            route: 'client/settings',
+            route: '/client/settings',
           },
         ];
         break;
@@ -58,7 +82,50 @@ export class NavbarComponent {
         break;
     }
   }
+
+  // toggle menu moviles
+  toggleMenu() {
+    this.menuOpen = !this.menuOpen;
+    // Prevenir scroll cuando el menú está abierto
+    if (this.menuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+  }
+
+  // cerrar menú al navegar 
+  onNavClick() {
+    // Cerrar menú al hacer clic en una opción en momobile
+    if (window.innerWidth <= 600) {
+      this.menuOpen = false;
+      document.body.style.overflow = '';
+    }
+  }
+
   logout() {
-    this.authService.logout();
+    Swal.fire({
+      text: '¿Estás seguro de que deseas salir?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Sí, cerrar',
+      cancelButtonText: 'Cancelar',
+      confirmButtonColor: '#dc2626',
+      cancelButtonColor: '#6b7280',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        toast.loading('Cerrando sesión...');
+
+        setTimeout(() => {
+          this.authService.logout();
+          toast.dismiss();
+          toast.success('Sesión cerrada correctamente');
+
+          // cerrar menu si está abierto
+          this.menuOpen = false;
+          document.body.style.overflow = '';
+        }, 1000);
+      }
+    });
   }
 }

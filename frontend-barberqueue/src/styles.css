@@ -1,3 +1,5 @@
+@import "sweetalert2/dist/sweetalert2.min.css";
+
 :root {
   --primary-background: #7ccf00;
   --secondary-background: linear-gradient(#252525, #000000);
@@ -159,20 +161,75 @@ body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
-/* alertas success  */
-
-.success-snackbar {
-  position: fixed !important;
-  left: 50% !important;
-  top: 50% !important;
-  transform: translate(-50%, -50%) !important;
-  z-index: 9999 !important;
+/* Estilos de iconos para SweetAlert2 */
+.swal2-popup {
+  background: white !important;
 }
 
-/* Estilo visual del snackbar */
-.success-snackbar .mdc-snackbar__surface {
-  background-color: #4caf50 !important;
-  color: white !important;
-  font-weight: bold;
-  border-radius: 8px !important;
+.swal2-icon {
+  border-width: 4px !important;
 }
+
+/* Iconos - colores por tipo */
+.swal2-icon.swal2-warning {
+  border-color: #f59e0b !important;
+  color: #f59e0b !important;
+}
+
+.swal2-icon.swal2-error {
+  border-color: #dc2626 !important;
+  color: #dc2626 !important;
+}
+
+.swal2-icon.swal2-success {
+  border-color: #16a34a !important;
+  color: #16a34a !important;
+}
+
+.swal2-icon.swal2-info {
+  border-color: #3b82f6 !important;
+  color: #3b82f6 !important;
+}
+
+.swal2-icon.swal2-question {
+  border-color: #6b7280 !important;
+  color: #6b7280 !important;
+}
+
+/* Contenido de todos los iconos */
+.swal2-icon {
+  width: 70px !important;
+  height: 70px !important;
+  margin: 1.2em auto !important;
+}
+
+.swal2-icon .swal2-icon-content {
+  color: inherit !important;
+  font-size: 32px !important;
+  font-weight: bold !important;
+}
+
+/* Botones en fila con mejor diseño */
+.swal2-actions {
+  flex-direction: row !important;
+  gap: 12px !important;
+  width: 100% !important;
+}
+
+.swal2-actions button {
+  flex: 1 !important;
+  margin: 0 !important;
+}
+.swal2-popup {
+  max-width: 400px !important;
+  width: 100% !important;
+  height: auto !important;
+  padding: 24px !important;
+  overflow: hidden !important;
+}
+
+.swal2-html-container {
+  overflow: visible !important;
+}
+
+/*fin estilos sweetAlert2*/

@@ -1,11 +1,11 @@
-<body *ngIf="showForm">
+@if (showForm) {
+<body>
   <main>
     <header>
       <app-logo></app-logo>
       <h1>Barberqueue</h1>
       <p>Crea tu cuenta de cliente</p>
     </header>
-
     <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
       <!-- Input nombre completo -->
       <div class="input-wrapper">
@@ -19,25 +19,19 @@
             formControlName="name"
           />
         </div>
-
         <!--mensaje de error-->
-        <div
-          class="error-message"
-          *ngIf="
-            (registerForm.get('name')?.invalid &&
-              registerForm.get('name')?.dirty) ||
-            registerForm.get('name')?.touched
-          "
-        >
-          <span *ngIf="registerForm.get('name')?.hasError('required')"
-            >El campo es obligatorio</span
-          >
-          <span *ngIf="registerForm.get('name')?.hasError('pattern')"
-            >Formato de nombre invalido</span
-          >
+        @if ( (registerForm.get('name')?.invalid &&
+        registerForm.get('name')?.dirty) || registerForm.get('name')?.touched )
+        {
+        <div class="error-message">
+          @if (registerForm.get('name')?.hasError('required')) {
+          <span>El campo es obligatorio</span>
+          } @if (registerForm.get('name')?.hasError('pattern')) {
+          <span>Formato de nombre invalido</span>
+          }
         </div>
+        }
       </div>
-
       <!-- Input email -->
       <div class="input-wrapper">
         <label for="email">Email</label>
@@ -50,23 +44,18 @@
             formControlName="email"
           />
         </div>
-        <div
-          class="error-message"
-          *ngIf="
-            (registerForm.get('email')?.invalid &&
-              registerForm.get('email')?.dirty) ||
-            registerForm.get('email')?.touched
-          "
-        >
-          <span *ngIf="registerForm.get('email')?.hasError('required')">
-            El campo es obligatorio</span
-          >
-          <span *ngIf="registerForm.get('email')?.hasError('email')"
-            >Formato de email invalido</span
-          >
+        @if ( (registerForm.get('email')?.invalid &&
+        registerForm.get('email')?.dirty) || registerForm.get('email')?.touched
+        ) {
+        <div class="error-message">
+          @if (registerForm.get('email')?.hasError('required')) {
+          <span> El campo es obligatorio</span>
+          } @if (registerForm.get('email')?.hasError('email')) {
+          <span>Formato de email invalido</span>
+          }
         </div>
+        }
       </div>
-
       <!-- Input contraseña -->
       <div class="input-wrapper">
         <label for="password">Contraseña</label>
@@ -79,22 +68,18 @@
             formControlName="password"
           />
         </div>
-        <div
-          class="error-message"
-          *ngIf="
-            (registerForm.get('password')?.invalid &&
-              registerForm.get('password')?.dirty) ||
-            registerForm.get('password')?.touched
-          "
-        >
-          <span *ngIf="registerForm.get('password')?.hasError('required')"
-            >EL campo es requerido</span
-          ><span *ngIf="registerForm.get('password')?.hasError('minlength')"
-            >La contraseña debe ser mayor a 8 caracteres</span
-          >
+        @if ( (registerForm.get('password')?.invalid &&
+        registerForm.get('password')?.dirty) ||
+        registerForm.get('password')?.touched ) {
+        <div class="error-message">
+          @if (registerForm.get('password')?.hasError('required')) {
+          <span>EL campo es requerido</span>
+          }@if (registerForm.get('password')?.hasError('minlength')) {
+          <span>La contraseña debe ser mayor a 8 caracteres</span>
+          }
         </div>
+        }
       </div>
-
       <!-- Input confirmar contraseña -->
       <div class="input-wrapper">
         <label for="confirmPassword">Confirmar Contraseña</label>
@@ -107,31 +92,21 @@
             formControlName="confirmPassword"
           />
         </div>
-        <div
-          class="error-message"
-          *ngIf="
-            registerForm.get('confirmPassword')?.dirty ||
-            registerForm.get('confirmPassword')?.touched
-          "
-        >
+        @if ( registerForm.get('confirmPassword')?.dirty ||
+        registerForm.get('confirmPassword')?.touched ) {
+        <div class="error-message">
           <!-- Requerido -->
-
-          <span
-            *ngIf="registerForm.get('confirmPassword')?.hasError('required')"
-            >EL campo es requerido</span
-          >
+          @if (registerForm.get('confirmPassword')?.hasError('required')) {
+          <span>EL campo es requerido</span>
+          }
           <!-- Contraseñas no coinciden -->
-
-          <span
-            *ngIf="
-              !registerForm.get('confirmPassword')?.hasError('required') &&
-              registerForm.hasError('passwordNoMatch')
-            "
-            >La contraseñas no coinciden</span
-          >
+          @if ( !registerForm.get('confirmPassword')?.hasError('required') &&
+          registerForm.hasError('passwordNoMatch') ) {
+          <span>La contraseñas no coinciden</span>
+          }
         </div>
+        }
       </div>
-
       <button type="submit">Crear cuenta</button>
       <a routerLink="/login"
         >¿Ya tienes una cuenta? <span>Iniciar sesión</span></a
@@ -139,3 +114,4 @@
     </form>
   </main>
 </body>
+}

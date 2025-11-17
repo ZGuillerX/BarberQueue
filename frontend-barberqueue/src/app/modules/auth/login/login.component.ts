@@ -3,9 +3,11 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { toast } from 'ngx-sonner';
 
 @Component({
   selector: 'app-login',
+  standalone: false,
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
 })
@@ -33,13 +35,14 @@ export class LoginComponent {
       return;
     }
 
+    const loadingToast = toast.loading('Iniciando sesión...');
     this.authService.login(data).subscribe({
       next: (res) => {
         this.showForm = false;
-        this.snackBar.open('Login exitoso', '', {
+        toast.dismiss(loadingToast);
+        toast.success('¡Login exitoso!', {
+          description: 'Redirigiendo al panel...',
           duration: 1000,
-          panelClass: ['success-snackbar'],
-          horizontalPosition: 'center',
         });
 
         //redirigir al home despues de 1 segunfdo
@@ -49,8 +52,14 @@ export class LoginComponent {
         }, 1000);
         this.loginForm.reset();
       },
-      error(err) {
-        console.error('Error', err);
+
+      error: (err) => {
+        // Mostrar snackbar con mensaje de error
+        toast.dismiss(loadingToast);
+        toast.error('Error de autenticación', {
+          description: 'Contraseña o usuario incorrecto',
+          duration: 3000,
+        });
       },
     });
   }
