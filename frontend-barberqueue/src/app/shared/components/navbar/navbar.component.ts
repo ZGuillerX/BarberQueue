@@ -106,7 +106,6 @@ export class NavbarComponent {
   logout() {
     Swal.fire({
       text: '¿Estás seguro de que deseas salir?',
-      icon: 'warning',
       showCancelButton: true,
       confirmButtonText: 'Sí, cerrar',
       cancelButtonText: 'Cancelar',
