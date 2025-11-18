@@ -4,6 +4,7 @@ import { BehaviorSubject, tap } from 'rxjs';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Router } from '@angular/router';
+import { toast } from 'ngx-sonner';
 
 export interface User {
   readonly id?: string;
@@ -37,6 +38,15 @@ export class AuthService {
     2: 'barber',
     3: 'client',
   };
+
+  private expiredSession: string =
+    'Tu sesión ha expirado. Inicia sesión nuevamente';
+
+  private sessionTimeout: any;
+  private countdownInterval: any;
+
+  // id del toast de countdown para actualizarlo
+  private countdownToastId: string | number | undefined = undefined;
 
   //creamos la instancia del rol con behaviorSubject para acceder globalmente al rol
   private globalRoleSubject = new BehaviorSubject<
@@ -72,23 +82,134 @@ export class AuthService {
   }
 
   logout() {
+    //para limpiar el timer antes del logout
+    this.clearSessionTimer();
+    this.clearCountdown();
+
     localStorage.removeItem('token');
     this.globalRoleSubject.next(null);
     this.globalDataUser.next(null);
     this.router.navigate(['/login']);
   }
 
+  //verificar si el token ya expiro
+  private isTokenExpired(token: string): boolean {
+    try {
+      const payload = JSON.parse(atob(token.split('.')[1]));
+
+      //obtiene el tiempo actual en segundos
+      const currentTime = Math.floor(Date.now() / 1000);
+      return payload.exp < currentTime;
+    } catch (err) {
+      console.log('Error decodificando el token');
+      return true;
+    }
+  }
+
+  // funcion para iniciar el timer de expiración
+  private startCountdown(seconds: number) {
+    let count = seconds;
+
+    // Mostrar el toast inicial
+    this.updateCountdownToast(count);
+
+    this.countdownInterval = setInterval(() => {
+      count--;
+
+      if (count > 0) {
+        // actualizar el contador
+        this.updateCountdownToast(count);
+      } else {
+        // al llegar a 0, limpiar todo y hacer logout
+        this.clearCountdown();
+        toast.warning(this.expiredSession);
+        this.logout();
+      }
+    }, 1000);
+  }
+
+  // Función helper para actualizar o crear el toast
+  private updateCountdownToast(seconds: number) {
+    // Si existe un toast previo, eliminarlo
+    if (this.countdownToastId !== undefined) {
+      toast.dismiss(this.countdownToastId);
+    }
+
+    // Crear nuevo toast con el contador actualizado
+    this.countdownToastId = toast.loading(
+      `Cerrando sesión en ${seconds} segundo${seconds !== 1 ? 's' : ''}...`,
+      {
+        duration: Infinity,
+      }
+    );
+  }
+
+  // funcion para limpiar el countdown
+  private clearCountdown() {
+    if (this.countdownInterval) {
+      clearInterval(this.countdownInterval);
+      this.countdownInterval = null;
+    }
+    if (this.countdownToastId !== undefined) {
+      toast.dismiss(this.countdownToastId);
+      this.countdownToastId = undefined;
+    }
+  }
+
+  //para iniciar el timer de expiración
+  private startSessionTimer(token: string) {
+    try {
+      const payload = JSON.parse(atob(token.split('.')[1]));
+      const currentTime = Math.floor(Date.now() / 1000);
+      const timeUntilExpiry = (payload.exp - currentTime) * 1000; // En milisegundos
+
+      if (timeUntilExpiry > 3000) {
+        // si faltan más de 3 segundos, espera hasta 3 segundos antes de iniciar countdown
+        this.sessionTimeout = setTimeout(() => {
+          this.startCountdown(3);
+        }, timeUntilExpiry - 3000);
+      } else if (timeUntilExpiry > 0) {
+        // si faltan menos de 3 segundos, inicia countdown inmediato con los segundos restantes
+        const secondsLeft = Math.ceil(timeUntilExpiry / 1000);
+        this.startCountdown(secondsLeft);
+      } else {
+        // si ya expiró, logout inmediato
+        toast.warning(this.expiredSession);
+        this.logout();
+      }
+    } catch (err) {
+      console.error('Error iniciando timer de sesión', err);
+    }
+  }
+
+  // funcion para limpiar el timer
+  private clearSessionTimer() {
+    if (this.sessionTimeout) {
+      clearTimeout(this.sessionTimeout);
+      this.sessionTimeout = null;
+    }
+  }
+
   setRoleFromToken(token: string) {
+    if (this.isTokenExpired(token)) {
+      toast.warning(this.expiredSession);
+      this.logout();
+      return;
+    }
+
     try {
       //decodificamos el payload que son los datos del usuario para obtener el rol
       const payload = JSON.parse(atob(token.split('.')[1]));
-      console.log(payload)
+      console.log(payload);
       const roleNum = Number(payload.roleId);
       const dataUser = { name: payload.name, email: payload.email };
       console.log(dataUser);
       const role: 'admin' | 'barber' | 'client' = this.roleMap[roleNum] ?? null;
       this.globalDataUser.next(dataUser);
       this.globalRoleSubject.next(role);
+
+      //iniciar el token pra expiracion automatica en tiempo real
+      this.startSessionTimer(token);
     } catch (err) {
       console.error('error parsing token', err);
       this.globalRoleSubject.next(null);
@@ -96,11 +217,15 @@ export class AuthService {
   }
 
   //cargarmos el rol desde el token
-
   loadRoleFromToken() {
     const token = localStorage.getItem('token');
     if (token) {
-      this.setRoleFromToken(token);
+      if (this.isTokenExpired(token)) {
+        toast.warning(this.expiredSession);
+        this.logout();
+      } else {
+        this.setRoleFromToken(token);
+      }
     }
   }
 
