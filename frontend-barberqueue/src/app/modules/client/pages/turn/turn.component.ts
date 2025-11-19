@@ -53,8 +53,19 @@ export class TurnComponent {
   toggleSeeMore() {
     const container = document.querySelector('.div-info-barber-client');
 
-    if (!container) return;
+    const seeMore = document.querySelector('.see-more-text');
+    const arrow = document.querySelector('.arrow');
+
+    if (!container || !seeMore || !arrow) return;
 
     container.classList.toggle('see-all');
+
+    if (container.classList.contains('see-all')) {
+      seeMore.innerHTML = 'Mostrar menos';
+      arrow.innerHTML = ' ⮝';
+    } else {
+      seeMore.innerHTML = 'Mostrar más';
+      arrow.innerHTML = '⮟';
+    }
   }
 }

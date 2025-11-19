@@ -310,7 +310,7 @@ header p {
     flex-direction: row;
     width: 100%;
     align-items: flex-start;
-    justify-content: space-between;
+    justify-content: space-around;
   }
 
   .div-options-court {
