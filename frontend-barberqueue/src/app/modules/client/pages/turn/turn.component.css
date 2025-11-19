@@ -243,6 +243,7 @@ header p {
 .options-court.active,
 .info-barber-client.active {
   border-color: #7ccf00;
+  background-color: #7ccf002c;
 }
 
 /*ver max 6 barberos*/
