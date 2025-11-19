@@ -6,4 +6,55 @@ import { Component } from '@angular/core';
   templateUrl: './turn.component.html',
   styleUrls: ['./turn.component.css'],
 })
-export class TurnComponent {}
+export class TurnComponent {
+  //seleccionar corte(uno solo)
+  selectCourt(event: Event) {
+    const selectedCourt = (event.currentTarget as HTMLElement).closest(
+      '.options-court'
+    );
+    if (!selectedCourt) return;
+
+    if (selectedCourt.classList.contains('active')) {
+      selectedCourt.classList.remove('active');
+      return;
+    }
+
+    document
+      .querySelectorAll('.options-court.active')
+      .forEach((card) => card.classList.toggle('active'));
+    selectedCourt.classList.toggle('active');
+  }
+
+  //seleccionar barbero(uno solo)
+  selectBarber(event: Event) {
+    const selectBarber = (event.currentTarget as HTMLElement).closest(
+      '.info-barber-client'
+    );
+
+    if (!selectBarber) return;
+
+    if (selectBarber.classList.contains('active')) {
+      selectBarber.classList.remove('active');
+      return;
+    }
+
+    // remueve active de todas las tarjetas
+    document
+      .querySelectorAll('.info-barber-client.active')
+      .forEach((card) => card.classList.toggle('active'));
+
+    selectBarber.classList.toggle('active');
+
+    //activa la tarjeta seleccionada
+    selectBarber.classList.add('active');
+  }
+
+  //funcion para ver mas en la seccion de elegir barbero
+  toggleSeeMore() {
+    const container = document.querySelector('.div-info-barber-client');
+
+    if (!container) return;
+
+    container.classList.toggle('see-all');
+  }
+}

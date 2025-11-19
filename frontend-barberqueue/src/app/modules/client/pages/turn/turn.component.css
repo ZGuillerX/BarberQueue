@@ -77,6 +77,8 @@ header p {
   gap: 16px;
   align-items: center;
   transition: transform 0.2s, border-color 0.2s;
+  border: 2px solid transparent;
+  transition: border-color 0.2s;
 }
 
 .options-court:hover {
@@ -179,6 +181,7 @@ header p {
   border: 1px solid var(--card-bg);
   transition: transform 0.2s, border-color 0.2s;
   cursor: pointer;
+  border: 2px solid transparent;
 }
 
 .info-barber-client:hover {
@@ -234,6 +237,34 @@ header p {
 
 .icon-fork {
   filter: brightness() invert(1);
+}
+
+/*funciones con ts*/
+.options-court.active,
+.info-barber-client.active {
+  border-color: #7ccf00;
+}
+
+/*ver max 6 barberos*/
+.div-info-barber-client:not(.see-all) .info-barber-client:nth-child(n + 7) {
+  opacity: 0;
+  transform: translateY(10px);
+  pointer-events: none;
+  height: 0;
+  overflow: hidden;
+}
+
+/* cuando este abierto mostrar todos*/
+.info-barber-client {
+  transition: opacity 0.8s ease, transform 0.5s ease;
+}
+
+/* cuando esta expandido, todos son visibles */
+.div-info-barber-client.see-all .info-barber-client {
+  display: flex;
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
 }
 
 /* RESPONSIVE DESIGN */

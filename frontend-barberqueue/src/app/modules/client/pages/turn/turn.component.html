@@ -34,7 +34,9 @@
               <span class="price-court"> $15</span>
             </div>
           </div>
-          <button class="btn-select-court">Seleccionar</button>
+          <button class="btn-select-court" (click)="selectCourt($event)">
+            Seleccionar
+          </button>
         </article>
 
         <article class="options-court">
@@ -52,7 +54,9 @@
               <span class="price-court">$25</span>
             </div>
           </div>
-          <button class="btn-select-court">Seleccionar</button>
+          <button class="btn-select-court" (click)="selectCourt($event)">
+            Seleccionar
+          </button>
         </article>
 
         <article class="options-court">
@@ -70,7 +74,9 @@
               <span class="price-court">$12</span>
             </div>
           </div>
-          <button class="btn-select-court">Seleccionar</button>
+          <button class="btn-select-court" (click)="selectCourt($event)">
+            Seleccionar
+          </button>
         </article>
 
         <article class="options-court">
@@ -100,30 +106,50 @@
           </h2>
         </div>
         <div class="div-info-barber-client">
-          <article class="info-barber-client">
+          <article class="info-barber-client" (click)="selectBarber($event)">
             <div class="principal-letter-barber" aria-label="Carlos">C</div>
             <h3 class="name-barber-client">Carlos</h3>
             <span class="state-barber-client">Disponible</span>
           </article>
 
-          <article class="info-barber-client">
+          <article class="info-barber-client" (click)="selectBarber($event)">
             <div class="principal-letter-barber" aria-label="Miguel">M</div>
             <h3 class="name-barber-client">Miguel</h3>
             <span class="state-barber-client">Disponible</span>
           </article>
 
-          <article class="info-barber-client">
+          <article class="info-barber-client" (click)="selectBarber($event)">
             <div class="principal-letter-barber" aria-label="José">J</div>
             <h3 class="name-barber-client">José</h3>
             <span class="state-barber-client">Disponible</span>
           </article>
-          <article class="info-barber-client">
+          <article class="info-barber-client" (click)="selectBarber($event)">
+            <div class="principal-letter-barber" aria-label="José">J</div>
+            <h3 class="name-barber-client">José</h3>
+            <span class="state-barber-client">Disponible</span>
+          </article>
+          <article class="info-barber-client" (click)="selectBarber($event)">
+            <div class="principal-letter-barber" aria-label="José">J</div>
+            <h3 class="name-barber-client">José</h3>
+            <span class="state-barber-client">Disponible</span>
+          </article>
+          <article class="info-barber-client" (click)="selectBarber($event)">
+            <div class="principal-letter-barber" aria-label="José">J</div>
+            <h3 class="name-barber-client">José</h3>
+            <span class="state-barber-client">Disponible</span>
+          </article>
+          <article class="info-barber-client" (click)="selectBarber($event)">
+            <div class="principal-letter-barber" aria-label="José">J</div>
+            <h3 class="name-barber-client">José</h3>
+            <span class="state-barber-client">Disponible</span>
+          </article>
+          <article class="info-barber-client" (click)="selectBarber($event)">
             <div class="principal-letter-barber" aria-label="José">J</div>
             <h3 class="name-barber-client">José</h3>
             <span class="state-barber-client">Disponible</span>
           </article>
         </div>
-        <div class="see-more">
+        <div class="see-more" (click)="toggleSeeMore()">
           <p>Ver Todos</p>
           <p>⮟</p>
         </div>
