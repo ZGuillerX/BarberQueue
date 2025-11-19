@@ -2,6 +2,11 @@ body {
   min-height: 130vh;
 }
 
+html,
+body {
+  overflow-x: clip;
+}
+
 /* NAVBAR PLACEHOLDER */
 .navbar-placeholder {
   background-color: #000;
@@ -224,22 +229,42 @@ header p {
   color: black;
   gap: 20px;
   width: 67%;
+  margin-bottom: 50px;
 }
 
 /* RESPONSIVE DESIGN */
 
 /* Móviles */
-@media (max-width: 480px) {
+@media (min-width: 100px) and (max-width: 380px) {
   .options-court {
-    width: 90%;
+    width: 89%;
   }
-
   .div-info-barber-client {
     grid-template-columns: repeat(2, 1fr);
   }
+  .section-turn {
+    margin-top: 100px;
+  }
 }
 
-@media (max-width: 750px) {
+/* 481px en adelante */
+@media (min-width: 381px) and (max-width: 480px) {
+  .options-court {
+    width: 89%;
+  }
+  .div-info-barber-client {
+    grid-template-columns: repeat(2, 1fr);
+    margin-left: 25px;
+  }
+  .section-turn {
+    margin-top: 100px;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 1199px) {
+  .options-court {
+    width: 93%;
+  }
   .section-turn {
     margin-top: 100px;
   }
@@ -251,12 +276,9 @@ header p {
     width: 100%;
     align-items: flex-start;
     justify-content: space-between;
-    gap: 200px;
   }
 
   .div-options-court {
-    flex: 1;
-    max-width: none;
     margin-top: 40px;
   }
 
