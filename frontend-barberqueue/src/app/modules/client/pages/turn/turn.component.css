@@ -1,0 +1,276 @@
+body {
+  min-height: 130vh;
+}
+
+/* NAVBAR PLACEHOLDER */
+.navbar-placeholder {
+  background-color: #000;
+  border-bottom: 1px solid #262626;
+}
+
+/* MAIN SECTION */
+.section-turn {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+  padding: 0 20px;
+}
+
+/* contenedor para el layout de dos columnas */
+.content-wrapper {
+  display: flex;
+  flex-direction: column;
+  max-width: 1200px;
+  gap: 30px;
+}
+
+/* HEADER */
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  text-align: center;
+}
+
+header h1 {
+  font-size: 1rem;
+}
+
+header p {
+  color: var(--font-color-3);
+  font-size: 0.9rem;
+}
+
+/* SERVICES SECTION */
+.div-options-court {
+  width: 100%;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 30px;
+}
+
+.div-options-court h2 {
+  font-size: 1.25rem;
+  color: var(--font-color-3);
+  font-size: 16px;
+  margin-bottom: 0px;
+}
+
+.options-court {
+  display: grid;
+  grid-template-columns: 80px 1fr 100px;
+  background: var(--background-form);
+  width: 100%;
+  border-radius: 14px;
+  border: 1px solid var(--card-bg);
+  padding: 16px;
+  gap: 16px;
+  align-items: center;
+  transition: transform 0.2s, border-color 0.2s;
+}
+
+.options-court:hover {
+  transform: translateY(-2px);
+  border-color: var(--primary-green);
+}
+
+.icon-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  width: 50px;
+  background: #525252;
+  border-radius: 10px;
+}
+
+.img-court {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+}
+
+.content-box {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.name-court {
+  font-size: 1rem;
+  margin: 0;
+}
+
+.info-court {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.time-court,
+.price-court {
+  color: var(--text-gray);
+  font-size: 12px;
+}
+
+.btn-select-court {
+  height: 40px;
+  font-size: 15px;
+}
+
+/* SELECT BARBER SECTION */
+.select-barber-optional {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  position: relative;
+}
+
+.text-select-barber {
+  font-size: 1.25rem;
+  color: var(--font-color-3);
+  font-size: 16px;
+  margin-bottom: 0px;
+}
+
+.text-optional {
+  color: white;
+  font-size: 0.875rem;
+}
+
+.section-select-barber {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  gap: 30px;
+}
+
+.div-info-barber-client {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  width: 100%;
+}
+
+.info-barber-client {
+  width: 100%;
+  max-width: 120px;
+  height: 180px;
+  min-width: 140px;
+  border-radius: 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--background-form);
+  border: 1px solid var(--card-bg);
+  transition: transform 0.2s, border-color 0.2s;
+  cursor: pointer;
+}
+
+.info-barber-client:hover {
+  transform: translateY(-4px);
+  border-color: var(--primary-green);
+}
+
+.principal-letter-barber {
+  background: #525252;
+  width: 40px;
+  height: 40px;
+  color: black;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-top: 5px;
+  flex-shrink: 0;
+}
+
+.name-barber-client {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.state-barber-client {
+  background: var(--primary-background);
+  color: black;
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.see-more {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+}
+
+.btn-take-turn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: black;
+  gap: 20px;
+  width: 67%;
+}
+
+/* RESPONSIVE DESIGN */
+
+/* Móviles */
+@media (max-width: 480px) {
+  .options-court {
+    width: 90%;
+  }
+
+  .div-info-barber-client {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 750px) {
+  .section-turn {
+    margin-top: 100px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .content-wrapper {
+    flex-direction: row;
+    width: 100%;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 200px;
+  }
+
+  .div-options-court {
+    flex: 1;
+    max-width: none;
+    margin-top: 40px;
+  }
+
+  .section-select-barber {
+    flex: 1;
+    max-width: 450px;
+    position: sticky;
+    margin-top: 40px;
+    position: relative;
+    bottom: 15px;
+  }
+
+  .text-select-barber {
+    position: relative;
+    top: 15px;
+  }
+}

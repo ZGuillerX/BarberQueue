@@ -18,6 +18,7 @@
   padding: 10px;
   cursor: pointer;
   z-index: 1001;
+  justify-content: center;
 }
 
 .hamburger-btn span {
@@ -109,7 +110,7 @@
   justify-content: flex-start;
   align-items: center;
   width: 100%;
-  margin: 20px;
+  margin: 30px 0 0 20px;
   gap: 10px;
 }
 
@@ -129,14 +130,20 @@
   cursor: pointer;
 }
 
-.nav-buttons .nav-button:hover {
-  background: var(--primary-background, #9eff00);
-  color: var(--font-color-1, black);
+.nav-buttons .nav-button.active-nav {
+  background: var(--primary-background, #9eff00) !important;
+  color: black !important;
+  font-weight: bold;
+}
+
+/* para cambiar el SVG a negro cuando está activo */
+.nav-buttons .nav-button.active-nav img {
+  filter: brightness(0);
 }
 
 .nav-buttons .nav-button.active-nav {
   background: var(--primary-background, #9eff00) !important;
-  color: var(--font-color-1, black) !important;
+  color: black !important;
   font-weight: bold;
 }
 
@@ -165,6 +172,7 @@
   transition: all 0.3s ease;
   font-size: 14px;
   font-weight: 500;
+  margin-top: 5px;
 }
 
 .logout-button:hover {

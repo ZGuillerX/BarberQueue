@@ -1,38 +1,138 @@
-<app-navbar></app-navbar>
-
-<app-logo></app-logo>
-
-<section class="section-turn">
-  <h1>BarberQueue</h1>
-  <p>Toma tu turno en segundos</p>
-
-  <div value="" class="options-court">
-    <div>
-      Corte 1
-      <span class="time-court">$10</span>
-      <span class="price-court">$20</span>
-    </div>
-    <div>
-      Corte 2
-      <span class="time-court">$10</span>
-      <span class="price-court">$20</span>
-    </div>
-    <div>
-      Corte 3
-      <span class="time-court">$10</span>
-      <span class="price-court">$20</span>
-    </div>
-    <div>
-      Corte 4
-      <span class="time-court">$10</span>
-      <span class="price-court">$20</span>
-    </div>
+<body>
+  <app-navbar></app-navbar>
+  <!-- Navbar Placeholder -->
+  <div class="navbar-placeholder">
+    <!-- app-navbar component -->
   </div>
-</section>
-<section class="select-barber">
-  <h1>Elige tu barbero</h1>
-  <p>firstLetter</p>
-  <p>name</p>
-  <p>state available or busy etc</p>
-  <button><img src="/assets/icons/fork.svg" alt="" />Tomar Turno</button>
-</section>
+
+  <!-- Main Section -->
+  <main class="section-turn">
+    <header>
+      <app-logo></app-logo>
+      <h1>BarberQueue</h1>
+      <p>Toma tu turno en segundos</p>
+    </header>
+
+    <!-- NUEVO CONTENEDOR WRAPPER -->
+    <div class="content-wrapper">
+      <!-- IZQUIERDA: Servicios -->
+      <section class="div-options-court">
+        <h2>Selecciona un servicio</h2>
+
+        <article class="options-court">
+          <div class="icon-box">
+            <img
+              src="/assets/icons/fork.svg"
+              class="img-court"
+              alt="Icono de servicio"
+            />
+          </div>
+          <div class="content-box">
+            <h3 class="name-court">Corte Clásico</h3>
+            <div class="info-court">
+              <span class="time-court"> 30 min</span>
+              <span class="price-court"> $15</span>
+            </div>
+          </div>
+          <button class="btn-select-court">Seleccionar</button>
+        </article>
+
+        <article class="options-court">
+          <div class="icon-box">
+            <img
+              src="/assets/icons/fork.svg"
+              class="img-court"
+              alt="Icono de servicio"
+            />
+          </div>
+          <div class="content-box">
+            <h3 class="name-court">Corte + Barba</h3>
+            <div class="info-court">
+              <span class="time-court">45 min</span>
+              <span class="price-court">$25</span>
+            </div>
+          </div>
+          <button class="btn-select-court">Seleccionar</button>
+        </article>
+
+        <article class="options-court">
+          <div class="icon-box">
+            <img
+              src="/assets/icons/fork.svg"
+              class="img-court"
+              alt="Icono de servicio"
+            />
+          </div>
+          <div class="content-box">
+            <h3 class="name-court">Afeitado Clásico</h3>
+            <div class="info-court">
+              <span class="time-court">20 min</span>
+              <span class="price-court">$12</span>
+            </div>
+          </div>
+          <button class="btn-select-court">Seleccionar</button>
+        </article>
+
+        <article class="options-court">
+          <div class="icon-box">
+            <img
+              src="/assets/icons/fork.svg"
+              class="img-court"
+              alt="Icono de servicio"
+            />
+          </div>
+          <div class="content-box">
+            <h3 class="name-court">Corte Premium</h3>
+            <div class="info-court">
+              <span class="time-court">40 min</span>
+              <span class="price-court">$35</span>
+            </div>
+          </div>
+          <button class="btn-select-court">Seleccionar</button>
+        </article>
+      </section>
+
+      <!-- DERECHA: Selección de Barbero -->
+      <section class="section-select-barber">
+        <div class="select-barber-optional">
+          <h2 class="text-select-barber">
+            Elige tu barbero <span class="text-optional">(opcional)</span>
+          </h2>
+        </div>
+        <div class="div-info-barber-client">
+          <article class="info-barber-client">
+            <div class="principal-letter-barber" aria-label="Carlos">C</div>
+            <h3 class="name-barber-client">Carlos</h3>
+            <span class="state-barber-client">Disponible</span>
+          </article>
+
+          <article class="info-barber-client">
+            <div class="principal-letter-barber" aria-label="Miguel">M</div>
+            <h3 class="name-barber-client">Miguel</h3>
+            <span class="state-barber-client">Disponible</span>
+          </article>
+
+          <article class="info-barber-client">
+            <div class="principal-letter-barber" aria-label="José">J</div>
+            <h3 class="name-barber-client">José</h3>
+            <span class="state-barber-client">Disponible</span>
+          </article>
+          <article class="info-barber-client">
+            <div class="principal-letter-barber" aria-label="José">J</div>
+            <h3 class="name-barber-client">José</h3>
+            <span class="state-barber-client">Disponible</span>
+          </article>
+        </div>
+        <div class="see-more">
+          <p>Ver Todos</p>
+          <p>⮟</p>
+        </div>
+
+        <button class="btn-take-turn">
+          <img src="/assets/icons/fork.svg" alt="" />
+          Tomar Turno
+        </button>
+      </section>
+    </div>
+  </main>
+</body>

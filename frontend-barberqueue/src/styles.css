@@ -16,7 +16,10 @@
 }
 
 body {
-  background: var(--secondary-background);
+  background: linear-gradient(#1a1919, #000000);
+  min-height: 100vh;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 h1 {
@@ -102,7 +105,6 @@ button {
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s;
-  margin-top: 0.5rem;
 }
 
 button:hover {
