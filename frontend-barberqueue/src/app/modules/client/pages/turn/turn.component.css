@@ -232,6 +232,10 @@ header p {
   margin-bottom: 50px;
 }
 
+.icon-fork {
+  filter: brightness() invert(1);
+}
+
 /* RESPONSIVE DESIGN */
 
 /* Móviles */
