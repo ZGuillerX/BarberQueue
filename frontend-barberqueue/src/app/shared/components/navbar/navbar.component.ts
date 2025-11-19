@@ -86,21 +86,22 @@ export class NavbarComponent {
   // toggle menu moviles
   toggleMenu() {
     this.menuOpen = !this.menuOpen;
-    // Prevenir scroll cuando el menú está abierto
-    if (this.menuOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
-    }
+
+    document.body.style.overflow = this.menuOpen ? 'hidden' : '';
   }
 
-  // cerrar menú al navegar 
+  // cerrar menú al navegar
   onNavClick() {
     // Cerrar menú al hacer clic en una opción en momobile
     if (window.innerWidth <= 600) {
       this.menuOpen = false;
       document.body.style.overflow = '';
     }
+  }
+
+  ngOnDestroy() {
+    // cuando el navbar se destruye al cambiar de ruta, restauramos siempre el scroll
+    document.body.style.overflow = '';
   }
 
   logout() {
