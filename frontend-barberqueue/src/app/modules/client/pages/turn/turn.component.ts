@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ThemeService } from 'src/app/core/services/theme.service';
 
 @Component({
   selector: 'app-turno',
@@ -7,6 +8,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./turn.component.css'],
 })
 export class TurnComponent {
+  constructor(private themeService: ThemeService) {
+    this.themeService.applyColor(
+      localStorage.getItem('selectedColor') || 'verde-lima'
+    );
+  }
   //seleccionar corte(uno solo)
   selectCourt(event: Event) {
     const selectedCourt = (event.currentTarget as HTMLElement).closest(

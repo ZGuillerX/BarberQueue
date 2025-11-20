@@ -4,6 +4,7 @@ import { AuthService } from 'src/app/core/services/auth.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { toast } from 'ngx-sonner';
+import { ThemeService } from 'src/app/core/services/theme.service';
 
 @Component({
   selector: 'app-login',
@@ -19,12 +20,16 @@ export class LoginComponent {
     private fb: FormBuilder,
     private authService: AuthService,
     private snackBar: MatSnackBar,
-    private router: Router
+    private router: Router,
+    private themeService: ThemeService
   ) {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(8)]],
     });
+
+    const savedColor = localStorage.getItem('selectedColor') || 'verde-lima';
+    this.themeService.applyColor(savedColor);
   }
 
   onSubmit() {

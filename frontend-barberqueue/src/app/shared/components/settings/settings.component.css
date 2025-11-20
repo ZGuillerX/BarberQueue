@@ -261,10 +261,15 @@
 :host-context(body.dark) .dark-mode-text h3,
 :host-context(body.dark) .header-text h1,
 :host-context(body.dark) .header-text p,
-:host-context(body.dark) .color-name {
+:host-context(body.dark) .color-name,
+:host-context(body.dark) .section-title,
+:host-context(body.dark),
+.preview-title {
   color: var(--font-color-1);
 }
 
-:host-context(body.dark) .dark-mode-text p {
+:host-context(body.dark) .dark-mode-text p,
+:host-context(body.dark) .header-text p,
+:host-context(body.dark) .section-description {
   color: var(--font-color-3);
 }

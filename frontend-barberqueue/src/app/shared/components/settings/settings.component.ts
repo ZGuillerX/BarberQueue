@@ -86,22 +86,12 @@ export class SettingsComponent {
 
   selectColor(colorId: string): void {
     this.selectedColorId = colorId;
+
+    // guardar el color en local
     localStorage.setItem('selectedColor', colorId);
 
-    const color = this.colors.find((c) => c.id === colorId);
-
-    document.documentElement.style.setProperty(
-      '--accent-color',
-      color?.hex || ''
-    );
-    document.documentElement.style.setProperty(
-      '--accent-hover',
-      color?.hover || ''
-    );
-    document.documentElement.style.setProperty(
-      '--accent-selected-bg',
-      color?.selected || ''
-    );
+    // se aplica el color desde ThemeService
+    this.theme.applyColor(colorId);
   }
 
   toggleDarkMode() {

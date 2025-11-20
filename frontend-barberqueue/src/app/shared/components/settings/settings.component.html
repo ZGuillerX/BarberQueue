@@ -20,6 +20,7 @@
     </div>
     <div
       class="toggle"
+      [style.background-color]="selectedColor.bg"
       [class.active]="theme.isDarkMode"
       (click)="toggleDarkMode()"
     ></div>

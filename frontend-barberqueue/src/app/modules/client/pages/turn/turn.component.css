@@ -42,10 +42,13 @@ header {
 
 header h1 {
   font-size: 1rem;
+  /* color: var(--font-color-1); */
+  color: var(--font-color-2);
 }
 
 header p {
-  color: var(--font-color-3);
+  /* color: var(--font-color-3); */
+  color: var(--font-color-4);
   font-size: 0.9rem;
 }
 
@@ -61,7 +64,8 @@ header p {
 
 .div-options-court h2 {
   font-size: 1.25rem;
-  color: var(--font-color-3);
+  /* color: var(--font-color-3); */
+  color: var(--font-color-2);
   font-size: 16px;
   margin-bottom: 0px;
 }
@@ -69,7 +73,8 @@ header p {
 .options-court {
   display: grid;
   grid-template-columns: 80px 1fr 100px;
-  background: var(--background-form);
+  /* background: var(--background-form); */
+  background: var(--background-form-2);
   width: 100%;
   border-radius: 14px;
   border: 1px solid var(--card-bg);
@@ -77,13 +82,14 @@ header p {
   gap: 16px;
   align-items: center;
   transition: transform 0.2s, border-color 0.2s;
-  border: 2px solid transparent;
+  /* border: 2px solid transparent; */
+  border: solid 2px var(--border-color-light);
   transition: border-color 0.2s;
 }
 
 .options-court:hover {
   transform: translateY(-2px);
-  border-color: var(--primary-green);
+  border-color: var(--accent-hover);
 }
 
 .icon-box {
@@ -92,7 +98,8 @@ header p {
   align-items: center;
   height: 50px;
   width: 50px;
-  background: #525252;
+  background: var(--background-icon-2);
+  /* background:var(--background-icon); */
   border-radius: 10px;
 }
 
@@ -109,6 +116,7 @@ header p {
 }
 
 .name-court {
+  color: var(--font-color-2);
   font-size: 1rem;
   margin: 0;
 }
@@ -121,7 +129,8 @@ header p {
 
 .time-court,
 .price-court {
-  color: var(--text-gray);
+  /* color: var(--text-gray); */
+  color: var(--font-color-4);
   font-size: 12px;
 }
 
@@ -141,13 +150,15 @@ header p {
 
 .text-select-barber {
   font-size: 1.25rem;
-  color: var(--font-color-3);
+  color: var(--font-color-2);
+  /* color: var(--font-color-3); */
   font-size: 16px;
   margin-bottom: 0px;
 }
 
 .text-optional {
-  color: white;
+  color: var(--font-color-4);
+  /* color: var(--font-color-1); */
   font-size: 0.875rem;
 }
 
@@ -177,23 +188,26 @@ header p {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: var(--background-form);
-  border: 1px solid var(--card-bg);
+  background: var(--background-form-2);
+  /* background: var(--background-form); */
+  border: solid 2px var(--border-color-light);
   transition: transform 0.2s, border-color 0.2s;
   cursor: pointer;
-  border: 2px solid transparent;
+  /* border: 2px solid transparent; */
 }
 
 .info-barber-client:hover {
   transform: translateY(-4px);
-  border-color: var(--primary-green);
+  border-color: var(--accent-hover);
 }
 
 .principal-letter-barber {
-  background: #525252;
+  background: var(--accent-selected-bg);
+  /* background: var(--background-icon); */
   width: 40px;
   height: 40px;
-  color: black;
+  color: var(--font-color-1);
+  /* color: var(--font-color-2); */
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -207,6 +221,7 @@ header p {
 .name-barber-client {
   font-size: 1.1rem;
   font-weight: 600;
+  color: var(--font-color-4);
 }
 
 .state-barber-client {
@@ -223,6 +238,11 @@ header p {
   flex-direction: column;
   align-items: center;
   cursor: pointer;
+}
+
+.see-more-text,
+.arrow {
+  color: var(--font-color-2);
 }
 
 .btn-take-turn {
