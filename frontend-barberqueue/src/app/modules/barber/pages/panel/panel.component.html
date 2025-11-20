@@ -1,1 +1,63 @@
 <app-navbar></app-navbar>
+
+<body>
+  <div class="container">
+    <!-- Header Cards -->
+    <div class="grid">
+      <!-- panel de Barbero -->
+      <div class="card">
+        <div class="card-header">
+          <div class="avatar avatar-green">
+            <span class="avatar-icon"></span>
+          </div>
+          <div>
+            <div class="card-title">Panel de Barbero</div>
+            <div class="card-subtitle">Gestiona tus turnos activos</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- turnos -->
+      <div class="card">
+        <div class="card-header">
+          <div class="avatar avatar-green">
+            <span class="avatar-text">C</span>
+          </div>
+          <div>
+            <div class="card-title">Carlos Rodriguez</div>
+            <div class="card-subtitle">Tus turnos de hoy</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- panel -->
+    <div class="main-panel">
+      <div class="empty-state">
+        <div class="icon-circle">
+          <span class="icon-large"></span>
+        </div>
+        <div class="empty-title">No hay clientes en atención</div>
+        <div class="empty-subtitle">Llama al siguiente cliente de la cola</div>
+        <button class="btn">
+          <span></span>
+          Llamar Siguiente
+        </button>
+      </div>
+    </div>
+
+    <!-- cola de Espera -->
+    <div class="card">
+      <div class="section-header">
+        <div class="section-title">Cola de Espera</div>
+        <div class="section-badge">0 en espera</div>
+      </div>
+      <div class="empty-state" style="padding: 48px 0">
+        <div class="icon-circle icon-circle-sm">
+          <span class="icon-medium"></span>
+        </div>
+        <div class="empty-subtitle">No hay clientes en espera</div>
+      </div>
+    </div>
+  </div>
+</body>
