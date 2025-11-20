@@ -202,7 +202,7 @@ header p {
 }
 
 .principal-letter-barber {
-  background: var(--accent-selected-bg);
+  background: var(--accent-bg);
   /* background: var(--background-icon); */
   width: 40px;
   height: 40px;
