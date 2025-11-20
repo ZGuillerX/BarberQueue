@@ -1,59 +1,65 @@
 <app-navbar></app-navbar>
-<body>
-  <div class="container">
-    <div class="header">
-      <div class="icon">⚙</div>
-      <div class="header-text">
-        <h1>Ajustes</h1>
-        <p>Personaliza la apariencia de BarberQueue</p>
-      </div>
-    </div>
-
-    <div class="dark-mode">
-      <div class="dark-mode-content">
-        <div class="dark-mode-icon">🌙</div>
-        <div class="dark-mode-text">
-          <h3>Modo Oscuro</h3>
-          <p>Interfaz con fondo oscuro y tonos neutros</p>
-        </div>
-      </div>
-      <div class="toggle"></div>
-    </div>
-
-    <div class="section">
-      <div class="section-title">Color de Acento</div>
-      <div class="section-description">
-        Selecciona el color principal para botones y elementos destacados
-      </div>
-
-      <div class="color-grid">
-        <div class="color-option selected">
-          <div class="color-circle" style="background-color: #84cc16">✓</div>
-          <div class="color-name selected">Verde Lima</div>
-        </div>
-        <div class="color-option">
-          <div class="color-circle" style="background-color: #3b82f6"></div>
-          <div class="color-name">Azul Eléctrico</div>
-        </div>
-        <div class="color-option">
-          <div class="color-circle" style="background-color: #a855f7"></div>
-          <div class="color-name">Púrpura</div>
-        </div>
-        <div class="color-option">
-          <div class="color-circle" style="background-color: #f97316"></div>
-          <div class="color-name">Naranja</div>
-        </div>
-        <div class="color-option">
-          <div class="color-circle" style="background-color: #ef4444"></div>
-          <div class="color-name">Rojo</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="section">
-      <div class="preview-title">Vista Previa</div>
-      <button class="preview-button">Botón Principal</button>
-      <div class="preview-text">Elemento destacado con color de acento</div>
+<div class="container">
+  <div class="header">
+    <div class="icon">⚙</div>
+    <div class="header-text">
+      <h1>Ajustes</h1>
+      <p>Personaliza la apariencia de BarberQueue</p>
     </div>
   </div>
-</body>
+
+  <div class="dark-mode-toggle">
+    <div class="dark-mode-content">
+      <div class="dark-mode-icon">🌙</div>
+      <div class="dark-mode-text">
+        <h3>Modo Oscuro</h3>
+        <p>Interfaz con fondo oscuro y tonos neutros</p>
+      </div>
+    </div>
+    <div
+      class="toggle"
+      [class.active]="theme.isDarkMode"
+      (click)="toggleDarkMode()"
+    ></div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Color de Acento</div>
+    <div class="section-description">
+      Selecciona el color principal para botones y elementos destacados
+    </div>
+
+    <div class="color-grid">
+      <div
+        *ngFor="let color of colors"
+        class="color-option"
+        [class.selected]="selectedColorId === color.id"
+        (click)="selectColor(color.id)"
+        [style.background-color]="
+          selectedColorId === color.id ? color.selected : ''
+        "
+      >
+        <div class="color-circle" [style.background-color]="color.hex">
+          <span *ngIf="selectedColorId === color.id">✓</span>
+        </div>
+        <div [class.selected]="selectedColorId === color.id" class="color-name">
+          {{ color.name }}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="preview-title">Vista Previa</div>
+    <button class="preview-button" [style.background-color]="selectedColor.bg">
+      Botón Principal
+    </button>
+    <div
+      class="preview-text"
+      [style.border-color]="selectedColor.bg"
+      [style.background-color]="selectedColor.light"
+    >
+      Elemento destacado con color de acento
+    </div>
+  </div>
+</div>

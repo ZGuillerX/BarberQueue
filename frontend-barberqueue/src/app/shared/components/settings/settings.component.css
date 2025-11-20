@@ -7,11 +7,11 @@
 .container {
   max-width: 600px;
   margin: 0 auto;
-  border-radius: 12px;
   padding: 24px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
 }
 
+/* ESTILOS GENERALES */
 .header {
   display: flex;
   align-items: center;
@@ -35,20 +35,22 @@
 .header-text h1 {
   font-size: 20px;
   font-weight: 600;
-  color: white;
+  color: #1a1a1a;
   margin-bottom: 4px;
+  transition: color 0.3s ease;
 }
 
 .header-text p {
   font-size: 14px;
-  color: white;
+  color: #666;
+  transition: color 0.3s ease;
 }
 
 .section {
   margin-bottom: 32px;
 }
 
-.dark-mode {
+.dark-mode-toggle {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -56,6 +58,7 @@
   background-color: #fafafa;
   border-radius: 12px;
   margin-bottom: 32px;
+  transition: background-color 0.3s ease;
 }
 
 .dark-mode-content {
@@ -81,21 +84,27 @@
   font-weight: 600;
   color: #1a1a1a;
   margin-bottom: 2px;
+  transition: color 0.3s ease;
 }
 
 .dark-mode-text p {
   font-size: 13px;
   color: #666;
+  transition: color 0.3s ease;
 }
 
 .toggle {
   width: 50px;
   height: 28px;
-  background-color: #1a1a1a;
+  background-color: #d4d4d4;
   border-radius: 14px;
   position: relative;
   cursor: pointer;
   transition: background-color 0.3s;
+}
+
+.toggle.active {
+  background-color: #84cc16;
 }
 
 .toggle::after {
@@ -106,21 +115,27 @@
   background-color: white;
   border-radius: 50%;
   top: 2px;
-  right: 2px;
+  left: 2px;
   transition: transform 0.3s;
+}
+
+.toggle.active::after {
+  transform: translateX(22px);
 }
 
 .section-title {
   font-size: 14px;
   font-weight: 600;
-  color: white;
+  color: #1a1a1a;
   margin-bottom: 8px;
+  transition: color 0.3s ease;
 }
 
 .section-description {
   font-size: 13px;
-  color: white;
+  color: #666;
   margin-bottom: 16px;
+  transition: color 0.3s ease;
 }
 
 .color-grid {
@@ -139,7 +154,7 @@
   border-radius: 12px;
   cursor: pointer;
   transition: all 0.2s;
-  background-color: #f7fee7;
+  background-color: #ffffff;
 }
 
 .color-option:hover {
@@ -147,12 +162,7 @@
 }
 
 .color-option.selected {
-  border-color: #84cc16;
-  background-color: #7ccf002c;
-}
-
-.color-name.selected {
-  color: white;
+  border-color: currentColor;
 }
 
 .color-circle {
@@ -169,20 +179,21 @@
 .color-name {
   font-size: 14px;
   font-weight: 500;
-  color: #1a1a1a;
+  color: black;
+  transition: color 0.3s ease;
 }
 
 .preview-title {
   font-size: 14px;
   font-weight: 600;
-  color: white;
+  color: #1a1a1a;
   margin-bottom: 12px;
+  transition: color 0.3s ease;
 }
 
 .preview-button {
   width: 100%;
   padding: 16px;
-  background-color: #84cc16;
   color: white;
   border: none;
   border-radius: 12px;
@@ -190,19 +201,29 @@
   font-weight: 600;
   cursor: pointer;
   margin-bottom: 12px;
-  transition: background-color 0.2s;
+  transition: all 0.2s;
 }
 
 .preview-button:hover {
-  background-color: #73b814;
+  filter: brightness(0.9);
+  transform: translateY(-1px);
 }
 
 .preview-text {
   width: 100%;
   padding: 16px;
-  border: 2px solid #84cc16;
-  background-color: #f7fee7;
+  border: 2px solid;
   border-radius: 12px;
   font-size: 14px;
   color: #1a1a1a;
+  transition: all 0.3s ease;
 }
+
+
+
+/* MODO OSCURO ACTIVADO */
+:host-context(body.dark) .header-text h1 {
+  color: var(--text-primary);
+}
+
+
