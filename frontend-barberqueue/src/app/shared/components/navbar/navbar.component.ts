@@ -3,6 +3,7 @@ import { AuthService } from 'src/app/core/services/auth.service';
 import { toast } from 'ngx-sonner';
 import Swal from 'sweetalert2';
 import { NavigationEnd, Router } from '@angular/router';
+import { ThemeService } from 'src/app/core/services/theme.service';
 
 @Component({
   selector: 'app-navbar',
@@ -25,7 +26,14 @@ export class NavbarComponent {
   // menu para moviles
   public menuOpen: boolean = false;
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private themeService: ThemeService
+  ) {
+    const savedColor = localStorage.getItem('selectedColor') || 'verde-lima';
+    this.themeService.applyColor(savedColor);
+  }
 
   ngOnInit() {
     this.activeRoute = this.router.url;

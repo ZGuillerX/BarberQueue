@@ -28,8 +28,17 @@ header {
 
 button {
   margin-top: 0.5rem;
+  color: var(--font-color-1);
 }
 
 a {
   cursor: pointer;
+}
+
+:host-context(body.dark) .dark-mode-icon {
+  background: var(--background-icon);
+}
+
+:host-context(body.dark) button {
+  color: var(--font-color-2);
 }

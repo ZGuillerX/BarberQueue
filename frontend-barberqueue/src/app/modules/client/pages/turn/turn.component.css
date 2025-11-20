@@ -42,12 +42,10 @@ header {
 
 header h1 {
   font-size: 1rem;
-  /* color: var(--font-color-1); */
   color: var(--font-color-2);
 }
 
 header p {
-  /* color: var(--font-color-3); */
   color: var(--font-color-4);
   font-size: 0.9rem;
 }
@@ -64,7 +62,6 @@ header p {
 
 .div-options-court h2 {
   font-size: 1.25rem;
-  /* color: var(--font-color-3); */
   color: var(--font-color-2);
   font-size: 16px;
   margin-bottom: 0px;
@@ -73,7 +70,6 @@ header p {
 .options-court {
   display: grid;
   grid-template-columns: 80px 1fr 100px;
-  /* background: var(--background-form); */
   background: var(--background-form-2);
   width: 100%;
   border-radius: 14px;
@@ -82,7 +78,6 @@ header p {
   gap: 16px;
   align-items: center;
   transition: transform 0.2s, border-color 0.2s;
-  /* border: 2px solid transparent; */
   border: solid 2px var(--border-color-light);
   transition: border-color 0.2s;
 }
@@ -99,7 +94,6 @@ header p {
   height: 50px;
   width: 50px;
   background: var(--background-icon-2);
-  /* background:var(--background-icon); */
   border-radius: 10px;
 }
 
@@ -107,6 +101,7 @@ header p {
   width: 30px;
   height: 30px;
   object-fit: contain;
+  filter: brightness(0) saturate(100%) var(--accent-color-filter);
 }
 
 .content-box {
@@ -129,14 +124,17 @@ header p {
 
 .time-court,
 .price-court {
-  /* color: var(--text-gray); */
+  display: flex;
+  gap: 5px;
   color: var(--font-color-4);
-  font-size: 12px;
+  font-size: 14px;
 }
 
 .btn-select-court {
   height: 40px;
   font-size: 15px;
+  background: var(--accent-bg);
+  color: var(--font-color-1);
 }
 
 /* SELECT BARBER SECTION */
@@ -151,14 +149,12 @@ header p {
 .text-select-barber {
   font-size: 1.25rem;
   color: var(--font-color-2);
-  /* color: var(--font-color-3); */
   font-size: 16px;
   margin-bottom: 0px;
 }
 
 .text-optional {
   color: var(--font-color-4);
-  /* color: var(--font-color-1); */
   font-size: 0.875rem;
 }
 
@@ -193,7 +189,6 @@ header p {
   border: solid 2px var(--border-color-light);
   transition: transform 0.2s, border-color 0.2s;
   cursor: pointer;
-  /* border: 2px solid transparent; */
 }
 
 .info-barber-client:hover {
@@ -203,11 +198,9 @@ header p {
 
 .principal-letter-barber {
   background: var(--accent-bg);
-  /* background: var(--background-icon); */
   width: 40px;
   height: 40px;
   color: var(--font-color-1);
-  /* color: var(--font-color-2); */
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -225,8 +218,8 @@ header p {
 }
 
 .state-barber-client {
-  background: var(--primary-background);
-  color: black;
+  background: var(--accent-bg);
+  color: var(--font-color-1);
   padding: 6px 16px;
   border-radius: 20px;
   font-size: 0.8rem;
@@ -249,21 +242,18 @@ header p {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: black;
+  color: var(--font-color-1);
   gap: 20px;
   width: 67%;
   margin-bottom: 50px;
-}
-
-.icon-fork {
-  filter: brightness() invert(1);
+  background: var(--accent-bg);
 }
 
 /*funciones con ts*/
 .options-court.active,
 .info-barber-client.active {
-  border-color: #7ccf00;
-  background-color: #7ccf002c;
+  border-color: var(--accent-border);
+  background-color: var(--accent-color-selected);
 }
 
 /*ver max 6 barberos*/
@@ -292,12 +282,47 @@ header p {
 
 /* Móviles */
 @media (min-width: 100px) and (max-width: 380px) {
-  .options-court {
-    width: 89%;
+  /* --- gri areas --- */
+  .icon-box {
+    grid-area: icon-box;
   }
+
+  .btn-select-court {
+    grid-area: btn-turn;
+  }
+
+  .content-box {
+    grid-area: box;
+  }
+
+  /* ---contenedor principal --- */
+  .options-court {
+    max-width: 260px;
+    display: grid;
+    grid-template-areas:
+      "icon-box icon-box btn-turn"
+      "box box box";
+  }
+
+  .div-options-court {
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+  }
+
+  .info-barber-client {
+    min-width: 132px;
+  }
+
+  .select-barber-optional {
+    display: flex;
+    justify-content: center;
+  }
+
   .div-info-barber-client {
     grid-template-columns: repeat(2, 1fr);
   }
+
   .section-turn {
     margin-top: 100px;
   }
@@ -315,6 +340,21 @@ header p {
   .section-turn {
     margin-top: 100px;
   }
+
+  .info-court {
+    justify-content: space-between;
+  }
+
+  .div-options-court {
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+  }
+
+  .select-barber-optional {
+    display: flex;
+    justify-content: center;
+  }
 }
 
 @media (min-width: 481px) and (max-width: 1199px) {
@@ -322,7 +362,13 @@ header p {
     width: 93%;
   }
   .section-turn {
-    margin-top: 100px;
+    margin-top: 110px;
+  }
+}
+
+@media (min-width: 751px) and (max-width: 1199px) {
+  .section-turn {
+    margin-top: 30px;
   }
 }
 
@@ -351,4 +397,65 @@ header p {
     position: relative;
     top: 15px;
   }
+}
+
+/* MODO OSCURO ACTIVADO */
+:host-context(body.dark) header h1,
+:host-context(body.dark) .text-optional,
+:host-context(body.dark) .name-court,
+:host-context(body.dark) .name-barber-client,
+:host-context(body.dark) .see-more-text,
+:host-context(body.dark) .arrow {
+  color: var(--font-color-1);
+}
+
+:host-context(body.dark) .principal-letter-barber,
+:host-context(body.dark) .btn-select-court,
+:host-context(body.dark) .state-barber-client,
+:host-context(body.dark) .btn-take-turn {
+  color: var(--font-color-2);
+}
+
+:host-context(body.dark) .options-court.active,
+:host-context(body.dark) .info-barber-client.active {
+  border-color: var(--accent-border);
+  background-color: var(--accent-color-selected);
+}
+
+:host-context(body.dark) .options-court {
+  background: var(--background-form);
+  border: 2px solid transparent;
+}
+
+:host-context(body.dark) .options-court {
+  background: var(--background-form);
+  border: 2px solid transparent;
+}
+
+:host-context(body.dark) .icon-box {
+  background: var(--background-icon);
+}
+
+:host-context(body.dark) .time-court,
+:host-context(body.dark) .price-court {
+  color: var(--font-color-3);
+}
+
+:host-context(body.dark) .info-barber-client {
+  background: var(--background-form);
+  border: 2px solid transparent;
+}
+
+:host-context(body.dark) .icon-time {
+  filter: brightness() invert(1);
+}
+
+:host-context(body.dark) .icon-fork {
+  filter: brightness() invert(1);
+}
+
+:host-context(body.dark) header p,
+:host-context(body.dark) .div-options-court h2,
+:host-context(body.dark) .text-select-barber {
+  color: var(--font-color-3);
 }

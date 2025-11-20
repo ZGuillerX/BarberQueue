@@ -3,6 +3,7 @@
 :root {
   --primary-background: #7ccf00;
   --secondary-background: linear-gradient(#252525, #000000);
+  --light-background: white;
   --background-form: #262626;
   --background-form-2: white;
   --background-input: #404040;
@@ -93,7 +94,7 @@ input:-webkit-autofill {
 }
 
 button {
-  background: var(--primary-background);
+  background: var(--accent-bg);
   border-radius: 8px;
   border: none;
   width: 100%;
@@ -106,7 +107,7 @@ button {
 }
 
 button:hover {
-  background: #9dd654;
+  background: var(--accent-hover);
   transform: translateY(-1px);
 }
 
@@ -117,18 +118,18 @@ button:active {
 a {
   text-align: center;
   font-size: 14px;
-  color: var(--font-color-3);
+  color: var(--accent-color);
   text-decoration: none;
   margin-top: 1rem;
 }
 
 a span {
-  color: var(--primary-background);
+  color: var(--accent-bg);
   font-weight: 500;
 }
 
 a span:hover {
-  color: #9dd654;
+  color: var(--accent-hover);
   text-decoration: underline;
 }
 
@@ -136,6 +137,7 @@ html,
 body {
   height: 100%;
 }
+
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
@@ -150,15 +152,6 @@ body {
     font-size: 14px;
     letter-spacing: 1px;
   }
-}
-
-html,
-body {
-  height: 100%;
-}
-body {
-  margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
 /* Estilos de iconos para SweetAlert2 */

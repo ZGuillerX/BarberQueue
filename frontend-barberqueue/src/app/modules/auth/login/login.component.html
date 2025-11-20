@@ -1,85 +1,65 @@
 @if (showForm) {
-  <body>
-    <main>
-      <header>
-        <app-logo></app-logo>
-        <h1>Barberqueue</h1>
-        <p>Inicia sesión en tu cuenta</p>
-      </header>
-      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-        <!-- Input email -->
-        <div class="input-wrapper">
-          <label for="email">Email</label>
-          <div class="input-container">
-            <img src="/assets/icons/email.svg" />
-            <input
-              type="email"
-              id="email"
-              placeholder="tu@email.com"
-              formControlName="email"
-              />
-          </div>
-          <!--mensaje de error-->
-          @if (
-            (loginForm.get('email')?.invalid &&
-            loginForm.get('email')?.dirty) ||
-            loginForm.get('email')?.touched
-            ) {
-            <div
-              class="error-message"
-              >
-              @if (loginForm.get('email')?.hasError('required')) {
-                <span
-                  >El campo es obligatorio</span
-                  >
-                }
-                @if (loginForm.get('email')?.hasError('email')) {
-                  <span
-                    >Formato de email invalido</span
-                    >
-                  }
-                </div>
-              }
-            </div>
-            <!-- Input contraseña -->
-            <div class="input-wrapper">
-              <label for="password">Contraseña</label>
-              <div class="input-container">
-                <img src="/assets/icons/lock.svg" alt="" />
-                <input
-                  type="password"
-                  id="password"
-                  placeholder="••••••••"
-                  formControlName="password"
-                  />
-              </div>
-              <!--mensaje de error-->
-              @if (
-                (loginForm.get('password')?.invalid &&
-                loginForm.get('password')?.dirty) ||
-                loginForm.get('email')?.touched
-                ) {
-                <div
-                  class="error-message"
-                  >
-                  @if (loginForm.get('password')?.hasError('required')) {
-                    <span
-                      >La contraseña es obligatoria</span
-                      >
-                    }
-                    @if (loginForm.get('password')?.hasError('minlength')) {
-                      <span
-                        >Mínimo 8 caracteres</span
-                        >
-                      }
-                    </div>
-                  }
-                </div>
-                <button type="submit">Iniciar sesión</button>
-                <a routerLink="/register"
-                  >¿No tienes una cuenta? <span>Regístrate aqui</span></a
-                  >
-                </form>
-              </main>
-            </body>
+<body>
+  <main>
+    <header>
+      <app-logo></app-logo>
+      <h1>Barberqueue</h1>
+      <p>Inicia sesión en tu cuenta</p>
+    </header>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <!-- Input email -->
+      <div class="input-wrapper">
+        <label for="email">Email</label>
+        <div class="input-container">
+          <img src="/assets/icons/email.svg" />
+          <input
+            type="email"
+            id="email"
+            placeholder="tu@email.com"
+            formControlName="email"
+          />
+        </div>
+        <!--mensaje de error-->
+        @if ( (loginForm.get('email')?.invalid && loginForm.get('email')?.dirty)
+        || loginForm.get('email')?.touched ) {
+        <div class="error-message">
+          @if (loginForm.get('email')?.hasError('required')) {
+          <span>El campo es obligatorio</span>
+          } @if (loginForm.get('email')?.hasError('email')) {
+          <span>Formato de email invalido</span>
           }
+        </div>
+        }
+      </div>
+      <!-- Input contraseña -->
+      <div class="input-wrapper">
+        <label for="password">Contraseña</label>
+        <div class="input-container">
+          <img src="/assets/icons/lock.svg" alt="" />
+          <input
+            type="password"
+            id="password"
+            placeholder="••••••••"
+            formControlName="password"
+          />
+        </div>
+        <!--mensaje de error-->
+        @if ( (loginForm.get('password')?.invalid &&
+        loginForm.get('password')?.dirty) || loginForm.get('email')?.touched ) {
+        <div class="error-message">
+          @if (loginForm.get('password')?.hasError('required')) {
+          <span>La contraseña es obligatoria</span>
+          } @if (loginForm.get('password')?.hasError('minlength')) {
+          <span>Mínimo 8 caracteres</span>
+          }
+        </div>
+        }
+      </div>
+      <button type="submit">Iniciar sesión</button>
+      <a routerLink="/register"
+        >¿No tienes una cuenta? <span>Regístrate aqui</span></a
+      >
+    </form>
+  </main>
+</body>
+}
