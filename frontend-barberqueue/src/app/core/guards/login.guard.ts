@@ -18,7 +18,7 @@ export class LoginGuard implements CanActivate {
           this.router.navigate(['/client/turn']);
           break;
         case 'barber':
-          this.router.navigate(['/barber/dashboard']);
+          this.router.navigate(['/barber/panel']);
           break;
         case 'admin':
           this.router.navigate(['/admin/dashboard']);

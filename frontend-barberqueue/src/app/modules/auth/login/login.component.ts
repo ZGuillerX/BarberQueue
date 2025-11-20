@@ -50,10 +50,22 @@ export class LoginComponent {
           duration: 1000,
         });
 
-        //redirigir al home despues de 1 segunfdo
+        // redirigir según el rol del usuario después de 1 segundo
+        const role = this.authService.getRole();
+        let target = '/client/turn';
+        switch (role) {
+          case 'barber':
+            target = '/barber/panel';
+            break;
+          case 'admin':
+            target = '/admin/dashboard';
+            break;
+          default:
+            target = '/client/turn';
+        }
 
         setTimeout(() => {
-          this.router.navigate(['/client/turn']);
+          this.router.navigate([target]);
         }, 1000);
         this.loginForm.reset();
       },

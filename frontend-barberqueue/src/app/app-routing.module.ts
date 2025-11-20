@@ -12,6 +12,12 @@ const routes: Routes = [
     loadChildren: () =>
       import('./modules/client/client.module').then((m) => m.ClientModule),
   },
+  {
+    path: 'barber',
+    loadChildren: () =>
+      import('./modules/barber/barber.module').then((m) => m.BarberModule),
+  },
+
   { path: '**', redirectTo: 'login' },
 ];
 

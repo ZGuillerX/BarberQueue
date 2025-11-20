@@ -83,6 +83,11 @@ export class NavbarComponent {
       case 'barber':
         this.optionsNav = [
           { icon: '', label: 'Panel', route: '/barber/panel' },
+          {
+            icon: '/assets/icons/settings.svg',
+            label: 'Ajustes',
+            route: '/barber/settings',
+          },
         ];
         break;
       case 'admin':
