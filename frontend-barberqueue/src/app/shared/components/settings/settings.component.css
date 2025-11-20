@@ -55,10 +55,11 @@
   align-items: center;
   justify-content: space-between;
   padding: 16px;
-  background-color: #fafafa;
+  background-color: var(--background-form-2);
   border-radius: 12px;
   margin-bottom: 32px;
   transition: background-color 0.3s ease;
+  border: solid 2px var(--border-color-light);
 }
 
 .dark-mode-content {
@@ -70,7 +71,7 @@
 .dark-mode-icon {
   width: 40px;
   height: 40px;
-  background-color: #1a1a1a;
+  background-color: var(--background-icon-2);
   border-radius: 8px;
   display: flex;
   align-items: center;
@@ -79,17 +80,22 @@
   font-size: 20px;
 }
 
+.moon-icon {
+  filter: brightness() invert(1);
+  width: 30px;
+}
+
 .dark-mode-text h3 {
   font-size: 15px;
   font-weight: 600;
-  color: #1a1a1a;
+  color: var(--font-color-2);
   margin-bottom: 2px;
   transition: color 0.3s ease;
 }
 
 .dark-mode-text p {
   font-size: 13px;
-  color: #666;
+  color: var(--font-color-4);
   transition: color 0.3s ease;
 }
 
@@ -158,7 +164,8 @@
 }
 
 .color-option:hover {
-  border-color: #d4d4d4;
+  transform: translateY(-2px);
+  border-color: var(--accent-hover);
 }
 
 .color-option.selected {
@@ -219,11 +226,45 @@
   transition: all 0.3s ease;
 }
 
-
-
 /* MODO OSCURO ACTIVADO */
-:host-context(body.dark) .header-text h1 {
-  color: var(--text-primary);
+
+:host-context(body.dark) .icon {
+  color: var(--font-color-2);
 }
 
+:host-context(body.dark) .dark-mode-toggle,
+:host-context(body.dark) .color-option {
+  background: var(--background-form);
+  color: var(--primary-background);
+}
 
+:host-context(body.dark) .dark-mode-toggle {
+  border: 2px solid transparent;
+}
+
+:host-context(body.dark) .color-option {
+  border: 2px solid transparent;
+}
+
+:host-context(body.dark) .color-option:hover {
+  border-color: var(--accent-hover);
+}
+
+/* :host-context(body.dark) .color-option.selected {
+  border-color: currentColor;
+} */
+
+:host-context(body.dark) .dark-mode-icon {
+  background: var(--background-icon);
+}
+
+:host-context(body.dark) .dark-mode-text h3,
+:host-context(body.dark) .header-text h1,
+:host-context(body.dark) .header-text p,
+:host-context(body.dark) .color-name {
+  color: var(--font-color-1);
+}
+
+:host-context(body.dark) .dark-mode-text p {
+  color: var(--font-color-3);
+}

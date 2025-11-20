@@ -10,7 +10,9 @@
 
   <div class="dark-mode-toggle">
     <div class="dark-mode-content">
-      <div class="dark-mode-icon">🌙</div>
+      <div class="dark-mode-icon">
+        <img class="moon-icon" src="/assets/icons/moon.svg" />
+      </div>
       <div class="dark-mode-text">
         <h3>Modo Oscuro</h3>
         <p>Interfaz con fondo oscuro y tonos neutros</p>
@@ -38,8 +40,13 @@
         [style.background-color]="
           selectedColorId === color.id ? color.selected : ''
         "
+        [style.borderColor]="selectedColorId === color.id ? color.hex : ''"
       >
-        <div class="color-circle" [style.background-color]="color.hex">
+        <div
+          class="color-circle"
+          [style.background-color]="color.hex"
+          [style.borderColor]="color.hex"
+        >
           <span *ngIf="selectedColorId === color.id">✓</span>
         </div>
         <div [class.selected]="selectedColorId === color.id" class="color-name">

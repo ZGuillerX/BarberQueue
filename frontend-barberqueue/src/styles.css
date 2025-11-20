@@ -4,10 +4,15 @@
   --primary-background: #7ccf00;
   --secondary-background: linear-gradient(#252525, #000000);
   --background-form: #262626;
+  --background-form-2: white;
   --background-input: #404040;
+  --background-icon: #525252;
+  --background-icon-2: black;
   --font-color-1: #ffffff;
   --font-color-2: #000000;
   --font-color-3: #a1a1a1;
+  --font-color-4: #525252;
+  --border-color-light: #e5e5e5;
 }
 
 * {
@@ -231,17 +236,6 @@ body {
 
 body.dark {
   --bg-color: var(--secondary-background);
-  --text-primary: #e9e9e9;
-  --text-secondary: #bbbbbb;
-  --text-tertiary: black;
-
-  --card-bg: #1a1a1a;
-  --card-border: #333333;
-
-  --navbar-bg: #0c0c0c;
-  --navbar-text: #eaeaea;
-
-  --section-bg: #151515;
 }
 
 body {
