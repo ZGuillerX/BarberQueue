@@ -33,7 +33,7 @@ body {
 .card {
   background: white;
   border-radius: 12px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 5px 3px rgba(0, 0, 0, 0.1);
   padding: 24px;
 }
 
@@ -51,10 +51,7 @@ body {
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-}
-
-.avatar-green {
-  background-color: #84cc16;
+  background: var(--accent-bg);
 }
 
 .avatar-icon {
@@ -72,17 +69,18 @@ body {
   font-size: 18px;
   font-weight: 600;
   margin-bottom: 4px;
+  color: var(--font-color-2);
 }
 
 .card-subtitle {
   font-size: 14px;
-  color: #6b7280;
+  color: var(--font-color-4);
 }
 
 .main-panel {
   background: white;
   border-radius: 12px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 5px 3px rgba(0, 0, 0, 0.1);
   padding: 64px 32px;
   text-align: center;
   margin-bottom: 24px;
@@ -98,7 +96,7 @@ body {
   width: 80px;
   height: 80px;
   border-radius: 50%;
-  background-color: #f3f4f6;
+  background-color: var(--accent-bg);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -134,22 +132,11 @@ body {
 }
 
 .btn {
-  background-color: #bef264;
-  color: #1f2937;
-  font-weight: 500;
-  padding: 10px 24px;
-  border-radius: 9999px;
+  color: var(--font-color-1);
   border: none;
   cursor: pointer;
-  font-size: 14px;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  transition: background-color 0.2s;
-}
-
-.btn:hover {
-  background-color: #a3e635;
+  gap: 10px;
+  width: 25%;
 }
 
 .section-header {
@@ -162,9 +149,47 @@ body {
 .section-title {
   font-size: 18px;
   font-weight: 600;
+  color: var(--font-color-2);
 }
 
 .section-badge {
   font-size: 14px;
-  color: #6b7280;
+  color: var(--font-color-2);
+  box-shadow: 0 5px 3px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  padding: 10px 15px;
+  display: flex;
+  justify-content: center;
+  background: var(--background-icon-3);
+}
+
+/* MODO OSCURO ACTIVADO */
+:host-context(body.dark) .card,
+:host-context(body.dark) .main-panel {
+  background: var(--background-form);
+}
+
+:host-context(body.dark) .empty-title,
+:host-context(body.dark) .card-title {
+  color: var(--font-color-1);
+}
+
+:host-context(body.dark) .empty-subtitle,
+:host-context(body.dark) .card-subtitle,
+:host-context(body.dark) .empty-subtitle {
+  color: var(--font-color-3);
+}
+
+:host-context(body.dark) .section-badge,
+:host-context(body.dark) .section-title {
+  color: var(--font-color-1);
+}
+
+:host-context(body.dark) .section-badge {
+  background: var(--background-icon);
+}
+
+:host-context(body.dark) .avatar-text,
+:host-context(body.dark) .btn {
+  color: var(--font-color-2);
 }

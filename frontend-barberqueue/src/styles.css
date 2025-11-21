@@ -9,6 +9,7 @@
   --background-input: #404040;
   --background-icon: #525252;
   --background-icon-2: black;
+  --background-icon-3: #e5e5e5;
   --font-color-1: #ffffff;
   --font-color-2: #000000;
   --font-color-3: #a1a1a1;
@@ -104,6 +105,9 @@ button {
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 button:hover {
@@ -236,4 +240,17 @@ body {
   min-height: 100vh;
   background-repeat: no-repeat;
   background-attachment: fixed;
+}
+
+.icon-img {
+  width: 30px;
+}
+
+button .icon-img {
+  width: 20px;
+  color: var(--font-color-1);
+}
+
+body.dark .icon-img {
+  filter: invert(1);
 }

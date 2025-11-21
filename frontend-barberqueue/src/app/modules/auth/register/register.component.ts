@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { ThemeService } from 'src/app/core/services/theme.service';
 
 @Component({
   selector: 'app-register',
@@ -18,7 +19,8 @@ export class RegisterComponent {
     private fb: FormBuilder,
     private authService: AuthService,
     private snackBar: MatSnackBar,
-    private route: Router
+    private route: Router,
+    private themService: ThemeService
   ) {
     // Inicialización del formulario con validaciones
     this.registerForm = this.fb.group(
@@ -32,6 +34,9 @@ export class RegisterComponent {
         validators: this.passwordMatchValidator,
       }
     );
+
+    const savedColor = localStorage.getItem('selectedColor') || 'verde-lima';
+    this.themService.applyColor(savedColor);
   }
 
   passwordMatchValidator(form: FormGroup) {
